@@ -97,6 +97,62 @@
       "description": "RSA 592-A:3 still describes a threshold where 'the punishment is a fine of $100 or of some specific sum less than $100', RSA 592-A:15 caps certain refusals at $100, and RSA 597:20 sets a court-officer recognisance fee at $60. These amounts derive from 19th- and mid-20th-century drafting. Their purchasing power has fallen by an order of magnitude, yet the thresholds continue to steer jurisdiction and procedural routes.",
       "quote": "...in any case where the punishment is a fine of $100 or of some specific sum less than $100, or imprisonment for 6 months or less...",
       "refs": ["592-A:3", "592-A:15", "597:20"]
+    },
+    {
+      "id": "i021",
+      "title": "General-definitions statute still expands 'insane' to include 'idiot', 'lunatic', 'non-compos' and 'distracted person'",
+      "category": "discrimination",
+      "description": "RSA 21:18, the statewide general-definitions chapter that binds every statute lacking its own definitions, defines 'insane' or 'insane person' to 'include every idiot, non-compos, lunatic, insane, or distracted person'. These are archaic moral/medical labels whose original drafting traces back to the Revised Statutes of 1842 (RS 1:15). Because this definition is still active, every statute that uses the word 'insane' inherits this slur-laden expansion.",
+      "quote": "The words \"insane\" or \"insane person\" shall include every idiot, non-compos, lunatic, insane, or distracted person.",
+      "refs": ["21:18"]
+    },
+    {
+      "id": "i022",
+      "title": "Communications statutes still enumerate the telegraph as a covered medium",
+      "category": "outdated",
+      "description": "Core communications-and-services definitions in the Criminal Code (RSA 637:8 theft of services, RSA 649:1 criminal mischief definitions) and the wiretap chapter (RSA 570-A:1) still explicitly list 'telegraph' alongside telephone and radio. Public telegraph service ended in the United States in the early 2000s; the references now do nothing except leave modern, equivalent technologies (text messaging, push notifications, VoIP) ambiguously outside the list.",
+      "quote": "...telephone or telegraph service, gas, electricity, water or steam, admission to entertainment...",
+      "refs": ["570-A:1", "637:8", "649:1"]
+    },
+    {
+      "id": "i023",
+      "title": "Tax, estate, and sexual-assault statutes still structured around 'husband and wife'",
+      "category": "outdated",
+      "description": "Three unrelated chapters of the NH code still frame substantive rules around the phrase 'husband and wife' rather than the gender-neutral 'spouses'. RSA 72:31 is a tax-credit provision titled and drafted 'Husband and Wife'. RSA 551:13 defines when a separation decree does not terminate 'the status of husband and wife' for will-revocation purposes. RSA 632-A:5 carves out the husband-and-wife communications privilege in sexual-assault cases. The phrasing predates NH's 2010 marriage-equality statute and the 2015 federal recognition of same-sex marriage, and forces statutory interpreters to assume 'husband and wife' means 'any two spouses' without that assurance being written down.",
+      "quote": "A husband and wife, each qualifying for a tax credit, shall each be granted a tax credit upon their residential real estate...",
+      "refs": ["72:31", "551:13", "632-A:5"]
+    },
+    {
+      "id": "i024",
+      "title": "Mandatory $50 domestic-violence surcharge never indexed to inflation",
+      "category": "outdated",
+      "description": "Every offence in the assault and sexual-assault chapters that can be recorded as 'domestic violence' carries a mandatory additional fine of exactly $50 on top of any other penalty. Although serious offences like first-degree assault and aggravated felonious sexual assault routinely involve penalties in the tens of thousands of dollars, the domestic-violence add-on has remained frozen at $50. Because the statute reads 'notwithstanding any other penalty authorized by law', the figure is not discretionary and cannot be inflated by the court.",
+      "quote": "Notwithstanding any other penalty authorized by law, the court shall levy a fine of $50 for each conviction recorded as \"...-domestic violence\" under this section. The court shall not reduce or suspend any sentence or fine imposed under this paragraph.",
+      "refs": ["631:1", "631:2", "631:2-b", "631:3", "632-A:2"]
+    },
+    {
+      "id": "i025",
+      "title": "Hundreds of still-operative sections trace unbroken to pre-1900 source dates",
+      "category": "outdated",
+      "description": "A broad sweep of the scraped titles shows roughly 537 sections still carrying effective dates from the 19th century in their Source lines, with the earliest traces going back to the Revised Statutes of 1842 and compiled statutes of 1853 and 1867. While many have been amended over the years, numerous sections — especially in Titles I (State and Government), LVI (Probate), LIX (Criminal Procedure), and LXII (Criminal Code) — still carry original 19th-century drafting forward with only minor adjustments. Representative examples: RSA 21:18 (1842), 551:13 (1842), 592-A:1 (1855).",
+      "quote": "RS 1:15. CS 1:15. GS 1:17. GL 1:17. PS 2:18. PL 2:18. RL 7:18.",
+      "refs": ["21:18", "551:13", "592-A:1"]
+    },
+    {
+      "id": "i026",
+      "title": "'Law enforcement officer' is defined inconsistently across five chapters",
+      "category": "contradiction",
+      "description": "At least five chapters define the phrase 'law enforcement officer' on their own terms. RSA 651:6 and 106-M:1 use a narrow enumeration (sheriff or deputy, state police, constable). RSA 106-L:2 gives an employment-based test (anyone employed by a local, municipal, county, or state government in specified roles). RSA 106-B:35 is the broadest, covering any state, county, or municipal law-enforcement officer. RSA 642:3-a outsources its definition to 'as defined in RSA 630:1, II'. Whether a particular person is a 'law enforcement officer' can therefore depend entirely on which chapter's definition the prosecution invokes, with no central cross-reference.",
+      "quote": "RSA 651:6: a sheriff or deputy sheriff of any county, a state police officer, a constable or a police officer... | RSA 106-B:35: any state, county, or municipal law enforcement officer.",
+      "refs": ["642:3-a", "651:6", "106-B:35", "106-L:2", "106-M:1"]
+    },
+    {
+      "id": "i027",
+      "title": "'Inmate' defined in gendered and incompatible ways across multiple chapters",
+      "category": "contradiction",
+      "description": "The statutes define 'inmate' at least three different ways. The interstate-corrections compacts (RSA 622-A:2, 622-B:2) say 'a male or female offender who is committed, under sentence to or confined in a penal or correctional institution' — both gendered and confinement-specific. RSA 623-B:1 uses the broader 'a person confined to a correctional facility as the result of conviction of a crime'. RSA 21-H:2 says any 'adult committed by law to the custody of the commissioner'. The 'male or female' framing is additionally outdated given that NH law recognises non-binary gender elsewhere.",
+      "quote": "\"Inmate\" means a male or female offender who is committed, under sentence to or confined in a penal or correctional institution.",
+      "refs": ["21-H:2", "622-A:2", "622-B:2", "623-B:1"]
     }
   ]
 }
