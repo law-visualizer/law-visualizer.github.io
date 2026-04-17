@@ -99,10 +99,18 @@ def scrape_title(title):
 
 
 if __name__ == "__main__":
+    import subprocess
     ap = argparse.ArgumentParser()
     ap.add_argument("titles", nargs="*", help="Title roman numerals (e.g. LXI LXIII). Defaults to the original 4.")
     args = ap.parse_args()
     titles = args.titles or DEFAULT_TITLES
+    process_script = os.path.join(os.path.dirname(__file__), "process.py")
+    python_exe = sys.executable
     for t in titles:
         scrape_title(t)
+        # Incremental reprocess so laws-index.json reflects each completed title
+        try:
+            subprocess.run([python_exe, process_script], check=True, capture_output=True)
+        except subprocess.CalledProcessError as e:
+            print(f"  [process.py failed after {t}]: {e.stderr.decode()[:200] if e.stderr else e}")
     print("\nScraping complete.")
