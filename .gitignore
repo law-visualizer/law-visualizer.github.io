@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Raw scraped HTML (bulky, re-derivable by running scripts/scrape.py)
+# Everything directly under data/ except the processed JSON artifacts.
+/data/*/
+!/data/laws-text/
+
+# Editor / OS / agent state
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+/tmp/

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NH LawViz - Issues in New Hampshire Law</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>NH LawViz</h1>
+        <p class="tagline">A visualization of issues in the New Hampshire Revised Statutes.</p>
+        <p class="subtitle">Contradictions, ambiguities, outdated references, and discriminatory provisions &mdash; starting with the Criminal Code (Title LXII).</p>
+    </header>
+
+    <nav class="category-nav">
+        <a href="#overview">Overview</a>
+        <a href="#search">Search</a>
+        <a href="#connections">Connections</a>
+        <a href="#by-title">By Title</a>
+        <a href="#issues">Issues</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <main>
+        <section id="search" class="search-section">
+            <h2>Search RSAs</h2>
+            <p>Search by RSA number (e.g. <code>625:11</code>, <code>632-A</code>) or by heading text (e.g. <code>rape</code>, <code>insanity</code>). Pick a result to view the full text and any associated issues.</p>
+            <div class="search-bar">
+                <input type="text" id="rsa-search" placeholder="Start typing an RSA number or heading&hellip;" autocomplete="off" spellcheck="false">
+                <ul id="rsa-suggestions" class="suggestions" hidden></ul>
+            </div>
+            <div id="rsa-detail"></div>
+        </section>
+
+        <section id="overview">
+            <h2>Overview</h2>
+            <div class="stats stats-primary">
+                <div class="stat stat-total"><span class="stat-value" id="stat-issues">&mdash;</span><span class="stat-label">Issues flagged</span></div>
+                <div class="stat stat-cat cat-contradiction"><span class="stat-value" id="stat-cat-contradiction">&mdash;</span><span class="stat-label">Contradictions</span></div>
+                <div class="stat stat-cat cat-ambiguity"><span class="stat-value" id="stat-cat-ambiguity">&mdash;</span><span class="stat-label">Ambiguities</span></div>
+                <div class="stat stat-cat cat-outdated"><span class="stat-value" id="stat-cat-outdated">&mdash;</span><span class="stat-label">Outdated</span></div>
+                <div class="stat stat-cat cat-discrimination"><span class="stat-value" id="stat-cat-discrimination">&mdash;</span><span class="stat-label">Discriminatory</span></div>
+            </div>
+            <div class="stats stats-secondary">
+                <div class="stat stat-sub"><span class="stat-value" id="stat-titles">&mdash;</span><span class="stat-label">Titles</span></div>
+                <div class="stat stat-sub"><span class="stat-value" id="stat-chapters">&mdash;</span><span class="stat-label">Chapters</span></div>
+                <div class="stat stat-sub"><span class="stat-value" id="stat-sections">&mdash;</span><span class="stat-label">Sections</span></div>
+            </div>
+            <p class="note">Inspired by <a href="http://bibviz.com" target="_blank" rel="noopener">BibViz</a>. All text links back to the <a href="https://www.gc.nh.gov/" target="_blank" rel="noopener">official NH General Court site</a>.</p>
+        </section>
+
+        <section id="connections">
+            <h2>Connections</h2>
+            <p>Ticks represent titles, chapters, or sections depending on zoom level. Arcs connect units that share an issue; dots mark issues confined to a single unit. <strong>To zoom in, click a label below the tick (or click a bar in &ldquo;By Title&rdquo; below). Use the breadcrumb to zoom out.</strong></p>
+            <div class="arc-controls">
+                <label><input type="checkbox" class="arc-cat" value="contradiction" checked> Contradictions</label>
+                <label><input type="checkbox" class="arc-cat" value="ambiguity" checked> Ambiguities</label>
+                <label><input type="checkbox" class="arc-cat" value="outdated" checked> Outdated</label>
+                <label><input type="checkbox" class="arc-cat" value="discrimination" checked> Discriminatory</label>
+            </div>
+            <nav id="arc-breadcrumb" class="breadcrumb"></nav>
+            <div id="arc-chart"></div>
+            <div id="arc-detail" class="detail-panel">
+                <p class="hint">Hover an arc to preview; click a tick to zoom in.</p>
+            </div>
+        </section>
+
+        <section id="by-title">
+            <h2>Issues by Title</h2>
+            <p>Total flagged issue references within each scraped title. Click a bar to zoom the connection chart into that title.</p>
+            <div id="title-chart"></div>
+        </section>
+
+        <section id="issues">
+            <h2>Issues by Category</h2>
+            <div class="category-filters" id="category-filters"></div>
+            <div id="issue-list"></div>
+        </section>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>This site is a proof-of-concept mapping of issues in NH Revised Statutes. The full text of every cited section is fetched from the official <a href="https://gc.nh.gov/rsa/html/" target="_blank" rel="noopener">gc.nh.gov</a> site.</p>
+            <p>Issues are curated manually &mdash; automated language models miss nuance. Each issue entry includes the exact quoted text, a category, and a link back to the official source.</p>
+            <p>Source code and data available in the project repository.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data: NH Revised Statutes via <a href="https://gc.nh.gov/rsa/html/" target="_blank" rel="noopener">gc.nh.gov</a>. Non-commercial, educational use.</p>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

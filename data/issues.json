@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "description": "Curated issues in the NH Revised Statutes, proof-of-concept starting with Titles LVIII-LXII.",
+    "categories": {
+      "contradiction": "Internal conflicts or drafting inconsistencies between sections.",
+      "ambiguity": "Vague or undefined terms that leave application unclear.",
+      "outdated": "References, dates, or framings that have not been modernized.",
+      "discrimination": "Discriminatory framings embedded in statutory language."
+    },
+    "notes": "Quotes are taken verbatim from the scraped HTML. Each `refs` entry points to the canonical section id in laws.json. Links to the official NH General Court site accompany each issue in the UI."
+  },
+  "issues": [
+    {
+      "id": "i005",
+      "title": "Parental-discipline justification turns on undefined 'misconduct'",
+      "category": "ambiguity",
+      "description": "RSA 627:6 permits a parent or guardian to use force against a minor when the adult 'reasonably believes it necessary to prevent or punish such minor's misconduct'. Neither 'misconduct' nor the force ceiling is defined in the statute, leaving broad discretion over what kinds of corporal discipline are lawful.",
+      "quote": "A parent, guardian or other person responsible for the general care and welfare of a minor is justified in using force against such minor when and to the extent that he reasonably believes it necessary to prevent or punish such minor's misconduct.",
+      "refs": ["627:6"]
+    },
+    {
+      "id": "i006",
+      "title": "'Reasonable person' standard left undefined across Culpability chapter",
+      "category": "ambiguity",
+      "description": "The core culpability definitions in RSA 626:2 build criminal negligence on the behaviour 'a reasonable person would observe in the situation', without defining what that person is, what characteristics they share with the defendant, or how the standard is applied. The phrase recurs throughout the code but is nowhere anchored.",
+      "quote": "...a gross deviation from the conduct that a reasonable person would observe in the situation.",
+      "refs": ["626:2", "625:10", "626:6", "626:7"]
+    },
+    {
+      "id": "i007",
+      "title": "'Substantial risk' used as a threshold without further definition",
+      "category": "ambiguity",
+      "description": "Entrapment (626:5) and the definition of deadly force (627:9) both hinge on whether conduct creates a 'substantial risk' of a particular outcome, but 'substantial' is not further qualified. Where the difference between deadly and non-deadly force triggers very different consequences, the undefined threshold is notable.",
+      "quote": "\"Deadly force\" means any assault or confinement which the actor commits with the purpose of causing or which he knows to create a substantial risk of causing death or serious bodily injury.",
+      "refs": ["626:5", "627:9"]
+    },
+    {
+      "id": "i008",
+      "title": "Consent provision relies on vague 'reasonable judgment as to the harm involved'",
+      "category": "ambiguity",
+      "description": "RSA 626:6 determines when consent negates an offence by asking whether the consenting party could exercise 'reasonable judgment as to the harm involved'. 'Reasonable judgment' is undefined and overlaps with but does not match the separate 'reasonable person' standard in 626:2, leaving unclear which test courts are meant to apply.",
+      "quote": "...or to be unable to exercise a reasonable judgment as to the harm involved.",
+      "refs": ["626:6", "626:2"]
+    },
+    {
+      "id": "i009",
+      "title": "Wiretap and eavesdropping chapter still governed by 1969 framework",
+      "category": "outdated",
+      "description": "Core provisions in RSA 570-A (wiretapping and eavesdropping) carry effective dates from 1969 and 1976 with only light amendment since. The underlying technological context — landline telephony — bears little resemblance to modern internet, mobile, and cloud communications, so the statutory text leaves significant ambiguity around current surveillance technology.",
+      "quote": "1969, 403:1, eff. Aug. 31, 1969.",
+      "refs": ["570-A:1", "570-A:2", "570-A:5"]
+    },
+    {
+      "id": "i011",
+      "title": "Indecent-exposure statute uses 'fornicates' without statutory definition",
+      "category": "outdated",
+      "description": "RSA 645:1 criminalises one who 'fornicates, exposes his or her genitals, or performs any other act of gross lewdness' in public. 'Fornicates' is archaic language carried over from earlier moral-offence drafting and is nowhere defined in the Criminal Code, despite being the first element of the offence.",
+      "quote": "Such person fornicates, exposes his or her genitals, or performs any other act of gross lewdness under circumstances which he or she should know will likely cause affront or alarm...",
+      "refs": ["645:1"]
+    },
+    {
+      "id": "i012",
+      "title": "Unauthorized-use-of-firearms offence depends on undefined 'compact part of a town'",
+      "category": "ambiguity",
+      "description": "RSA 644:13 makes it an offence to discharge a firearm 'within the compact part of a town or city', and then defines 'compact part' by enumeration of building types plus an adjustable perimeter. The result is a circular, highly fact-dependent test: whether conduct is a crime can turn on whether a particular building happens to qualify, with no central list or map.",
+      "quote": "A person is guilty of a violation if, within the compact part of a town or city, such person fires or discharges any cannon, gun, pistol, air rifle or other firearm...",
+      "refs": ["644:13"]
+    },
+    {
+      "id": "i013",
+      "title": "Insanity defence and prisoner-transfer statutes still use 'insane' as a legal category",
+      "category": "outdated",
+      "description": "RSA 628:2 frames the insanity defence around a person who 'is insane at the time he acts', and RSA 651:10 and 651:11 authorise transfers of any 'insane' prisoner to the secure psychiatric unit. Elsewhere in the sentencing chapter (RSA 651:8-b) the same code uses the modern clinical formulation 'mental disease or defect', so the code applies two different vocabularies to the same concept, one of which is both outdated and stigmatising.",
+      "quote": "A person who is insane at the time he acts is not criminally responsible for his conduct.",
+      "refs": ["628:2", "651:10", "651:11"]
+    },
+    {
+      "id": "i017",
+      "title": "Spousal-privilege carve-out for sex-assault cases still framed as 'husband and wife'",
+      "category": "outdated",
+      "description": "RSA 632-A:5 disapplies the spousal-communications privilege in sexual-assault prosecutions, but only uses the phrase 'communications between husband and wife'. Since the Supreme Court's 2015 recognition of same-sex marriage and NH's own 2010 marriage-equality statute, this phrasing is technically ambiguous as to whether the carve-out covers all legal spouses or only different-sex pairs.",
+      "quote": "Laws attaching a privilege against the disclosure of communications between husband and wife are inapplicable to proceedings under this chapter.",
+      "refs": ["632-A:5"]
+    },
+    {
+      "id": "i019",
+      "title": "Interstate corrections compacts still use the term 'mentally defective'",
+      "category": "discrimination",
+      "description": "Both the New England Interstate Corrections Compact (RSA 622-A:2) and the broader Interstate Corrections Compact (RSA 622-B:2) describe facilities 'for the mentally ill or mentally defective'. 'Mentally defective' is obsolete clinical language no longer used in medical or rights-based frameworks and carries a clearly pejorative tone.",
+      "quote": "...a facility for the mentally ill or mentally defective) in which inmates as defined in (d) above may lawfully be confined...",
+      "refs": ["622-A:2", "622-B:2"]
+    },
+    {
+      "id": "i020",
+      "title": "Criminal-procedure fees fixed in cents-era statutes never re-indexed to inflation",
+      "category": "outdated",
+      "description": "RSA 592-A:3 still describes a threshold where 'the punishment is a fine of $100 or of some specific sum less than $100', RSA 592-A:15 caps certain refusals at $100, and RSA 597:20 sets a court-officer recognisance fee at $60. These amounts derive from 19th- and mid-20th-century drafting. Their purchasing power has fallen by an order of magnitude, yet the thresholds continue to steer jurisdiction and procedural routes.",
+      "quote": "...in any case where the punishment is a fine of $100 or of some specific sum less than $100, or imprisonment for 6 months or less...",
+      "refs": ["592-A:3", "592-A:15", "597:20"]
+    }
+  ]
+}

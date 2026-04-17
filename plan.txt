@@ -1,0 +1,42 @@
+Updated Plan: NH LawViz - Visualization of Issues in New Hampshire Laws
+TL;DR - Build a static website inspired by BibViz to highlight contradictions, unclear language, outdated references, discriminatory provisions, and other issues in NH Revised Statutes, starting with the Criminal Code (Title LXII) for proof-of-concept, using manual curation stored in JSON, and host on GitHub Pages for free static hosting.
+
+Steps
+Set up local project structure
+Create a local folder law_vis with subfolders: data/ (JSON files), scripts/ (scraping/processing), web/ (HTML/CSS/JS). Use plain HTML/JS/D3 for simplicity.
+
+Scrape NH law texts
+Download HTML content from https://gc.nh.gov/rsa/html/ for Title LXII chapters (625-651-F) and related titles (LVIII, LIX, LX) using a script (e.g., Python with requests/beautifulsoup). Store raw HTML locally for processing and to avoid repeated fetches.
+
+Process and structure law data
+Extract text from scraped HTML into a JSON structure mirroring BibViz: e.g., laws.json with titles, chapters, sections, and full text. Include metadata like URLs for linking back to official site.
+
+Manually curate issues
+Review the criminal law texts to identify issues: contradictions (e.g., conflicting penalties), ambiguities (vague terms like "reasonable"), outdated refs (pre-2020 dates), discriminatory language. Store in issues.json with categories (similar to BibViz's contra.json), each issue having description, refs to sections, and quotes.
+
+Implement visualizations
+Use D3.js to create interactive charts: bar charts of issues by chapter, selectable lines for details (like BibViz). Add sections for each issue type with lists of examples, linked to official text.
+
+Build and test site
+Assemble HTML pages, integrate data via JS. Test locally (e.g., with python -m http.server), verify links, responsiveness, and data accuracy.
+
+Relevant files
+data/laws.json — Structured NH law texts for Titles LVIII, LIX, LX, LXII.
+data/issues.json — Curated list of issues with refs and quotes.
+web/index.html — Main page with visualizations.
+scripts/scrape.py — Python script to download law HTML.
+Verification
+Run local server and check all visualizations load correctly, with accurate data.
+Validate links to official NH site work.
+Manually spot-check 5-10 issues for correctness and clarity.
+Test on different browsers/devices for responsiveness.
+Decisions
+Scope: Begin with criminal-related titles (LVIII-LXII) as specified; design JSON/data structure to easily add more titles later.
+Data storage: Use JSON for static compatibility; no Neo4j (server-based) — consider graph structures in JS/D3 if relationships are complex.
+Tech stack: HTML/CSS/JS + D3.js for BibViz-like style; keep simple for maintenance.
+Curation method: Manual, as automated NLP may miss nuances; store locally in repo.
+Hosting: GitHub Pages — free, static, no server needed.
+Further Considerations
+Data updates: Laws change; plan for periodic manual re-scraping and re-curation.
+Expansion: After criminal code, prioritize other titles based on user feedback (e.g., education, health).
+Legal/ethical: Ensure use is fair (non-commercial, links to official source); cite sources like BibViz does.
