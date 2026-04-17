@@ -33,7 +33,7 @@ async function loadJSON(path) {
 const SHARD_CACHE = new Map();
 async function getTitleShard(titleId) {
     if (SHARD_CACHE.has(titleId)) return SHARD_CACHE.get(titleId);
-    const t = await loadJSON(`../data/laws-text/${titleId}.json`);
+    const t = await loadJSON(`data/laws-text/${titleId}.json`);
     SHARD_CACHE.set(titleId, t);
     return t;
 }
@@ -950,8 +950,8 @@ function renderIssueList() {
 async function main() {
     try {
         const [laws, issues] = await Promise.all([
-            loadJSON("../data/laws-index.json"),
-            loadJSON("../data/issues.json"),
+            loadJSON("data/laws-index.json"),
+            loadJSON("data/issues.json"),
         ]);
         STATE.laws = laws;
         STATE.issues = issues.issues || issues;
