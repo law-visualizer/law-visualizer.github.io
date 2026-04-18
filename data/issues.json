@@ -153,6 +153,54 @@
       "description": "The statutes define 'inmate' at least three different ways. The interstate-corrections compacts (RSA 622-A:2, 622-B:2) say 'a male or female offender who is committed, under sentence to or confined in a penal or correctional institution' — both gendered and confinement-specific. RSA 623-B:1 uses the broader 'a person confined to a correctional facility as the result of conviction of a crime'. RSA 21-H:2 says any 'adult committed by law to the custody of the commissioner'. The 'male or female' framing is additionally outdated given that NH law recognises non-binary gender elsewhere.",
       "quote": "\"Inmate\" means a male or female offender who is committed, under sentence to or confined in a penal or correctional institution.",
       "refs": ["21-H:2", "622-A:2", "622-B:2", "623-B:1"]
+    },
+    {
+      "id": "i028",
+      "title": "'Emancipated minor' statutorily defined as 'minor female' only",
+      "category": "discrimination",
+      "description": "The abortion-statute definitions chapter (RSA 132, under Public Health) defines 'emancipated minor' in RSA 132:32 as 'any minor female who is or has been married or has by court order otherwise been freed from the care, custody, and control of her parents'. Although the surrounding subdivision is about abortion services — which involve female patients — the general concept 'emancipated minor' is elsewhere applied to any minor irrespective of sex. Anchoring the statutory definition to 'minor female' therefore encodes a gender assumption into a common legal term.",
+      "quote": "\"Emancipated minor\" means any minor female who is or has been married or has by court order otherwise been freed from the care, custody, and control of her parents.",
+      "refs": ["132:32"]
+    },
+    {
+      "id": "i029",
+      "title": "Resident tax statute still exempts 'aliens' and 'insane persons' by name",
+      "category": "outdated",
+      "description": "RSA 72:1, the 'Persons Liable' section that imposes the resident tax on every inhabitant 18 to 65, lists the exemptions as 'assisted persons, insane persons, the surviving spouse of any veteran...'. The categories read like a 19th-century poor-law carve-out: 'assisted persons' is archaic phrasing for people receiving public assistance, 'insane persons' is a stigmatising clinical label (and one that pulls in the expansive 21:18 definition covering 'idiot, lunatic, non-compos, distracted person'), and the section still uses 'alien' rather than the modern 'non-citizen'.",
+      "quote": "...a tax of $10, to be known as the \"resident tax,\" shall be assessed on every inhabitant of the state from 18 to 65 years of age whether a citizen of the United States or an alien, except assisted persons, insane persons, the surviving spouse of any veteran...",
+      "refs": ["72:1"]
+    },
+    {
+      "id": "i030",
+      "title": "'Moral turpitude' used as a disqualifier across many statutes with no shared definition",
+      "category": "ambiguity",
+      "description": "The phrase 'moral turpitude' (or 'immoral behavior') appears as a disqualifying ground in municipal-employment, military-appointment, and licensing statutes across NH. Only RSA 106-L:2 (police standards and training council) gives it a definition ('an illegal act involving dishonesty, deceit, theft, or willful misconduct') and only for that chapter. Every other chapter — e.g. RSA 28:10-a (county employment), RSA 47:17 (municipal ordinances), RSA 110-B:20 / 110-B:24 (New Hampshire National Guard commissioning and discharge) — leaves the phrase undefined, forcing agencies to improvise on a term already criticised in federal jurisprudence for its unconstitutional vagueness.",
+      "quote": "...the commission of an offense involving moral turpitude or punishable by a court-martial, shall not be eligible for appointment as a commissioned officer...",
+      "refs": ["28:10-a", "47:17", "106-L:2", "110-B:20", "110-B:24"]
+    },
+    {
+      "id": "i031",
+      "title": "Licensing across unrelated professions turns on undefined 'good moral character'",
+      "category": "ambiguity",
+      "description": "Several professional-licensing chapters gate admission on a finding of 'good moral character' without defining the phrase. Examples include police officers (RSA 106-L:6), healthcare-facility certification (RSA 151-A:5), employment-agency licensure (RSA 277-B:7), accounting firm ownership (RSA 309-B:8), and architecture licensure (RSA 310-A:170). The term is a legacy standard from early-20th-century licensing drafting; its open-texture leaves boards with substantial discretion to deny applications on grounds that cannot be crisply reviewed on appeal.",
+      "quote": "...(c) Is of good moral character; and (d) Has a high school education, or the equivalent thereof, as defined by the department...",
+      "refs": ["106-L:6", "151-A:5", "277-B:7", "309-B:8", "310-A:170"]
+    },
+    {
+      "id": "i032",
+      "title": "Clergy-privilege statute enumerates only Christian and Jewish roles by name",
+      "category": "discrimination",
+      "description": "RSA 516:35, the statutory privilege excusing religious leaders from disclosing confessions, lists 'a priest, rabbi or ordained or licensed minister of any church or a duly accredited Christian Science practitioner'. Imams, swamis, lamas, rinpoches, babalawos, shamans, and non-theistic spiritual advisers are nowhere named and are brought in — if at all — only through a strained reading of 'minister of any church'. The marriage-solemnisation statute, RSA 457:31, picks a similar Christian frame by beginning with 'minister of the gospel'. The effect is that the state's default clergy-privilege roster reflects the religious demographics of NH in the mid-20th century, not today.",
+      "quote": "A priest, rabbi or ordained or licensed minister of any church or a duly accredited Christian Science practitioner shall not be required to disclose a confession or confidence made to him in his professional character as spiritual adviser...",
+      "refs": ["457:31", "516:35"]
+    },
+    {
+      "id": "i033",
+      "title": "'Satisfactory evidence' / 'satisfactory proof' used as a threshold without any definition",
+      "category": "ambiguity",
+      "description": "The phrase 'satisfactory evidence', 'satisfactory proof', or 'satisfactory showing' appears in roughly 100 sections across the NH code as the trigger for agency or court action — for example RSA 21-I:35 (state-employee insurance eligibility), RSA 21-P:29 (firefighter certification), RSA 482-B:5 (well-contractor licensure), RSA 514:3 and 514:6 (service of process). It is nowhere defined, and NH case law treats it as a free-standing substantive standard distinct from both 'preponderance' and 'clear and convincing'. The result is a patchwork where the same language can mean very different things depending on the chapter.",
+      "quote": "...upon satisfactory evidence that the order has been complied with, the notice shall be sufficient.",
+      "refs": ["21-I:35", "21-P:29", "482-B:5", "514:3", "514:6"]
     }
   ]
 }
