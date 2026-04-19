@@ -249,6 +249,86 @@
       "description": "The same phrase 'sufficient cause' (or 'good and sufficient cause') functions as the trigger for incompatible kinds of action across the code: dismissal of city watchmen and constables (RSA 47:14), denial of a well-contractor's license (RSA 482-B:8), forfeiture of a juror's per-diem pay (RSA 500-A:19), late filing of a writ of error (RSA 508:7), discharge of a person on habeas corpus (RSA 534:22), and probate-court appearances by sick parties (RSA 547:20). The standard is nowhere defined; whether a particular reason is 'sufficient' depends entirely on the discretion of the deciding officer.",
       "quote": "Any person who, without sufficient cause, neglects to attend court after having been selected as a juror and duly notified...",
       "refs": ["47:14", "482-B:8", "500-A:19", "508:7", "534:22", "547:20"]
+    },
+    {
+      "id": "i040",
+      "title": "Document-management statutes still authorize photostat, microfilm, and multilithing",
+      "category": "outdated",
+      "description": "The state's general document-reproduction authority (RSA 20-A:1 and 20-A:5) authorises the duplication of forms, letters, papers and reports 'by mimeographing, photostating, multilithing, microfilming, or reproducing by any other similar methods'. RSA 5:30 directs the director of records to 'establish and maintain a central microfilming laboratory and establish micrographic standards for public records'. None of these terms describe technologies still in routine state use; modern equivalents are PDFs and cloud storage. The catch-all 'similar methods' is left to do all the modern work.",
+      "quote": "...the duplication of forms, letters, papers, reports and the like by mimeographing, photostating, multilithing, microfilming, or reproducing by any other similar methods...",
+      "refs": ["5:30", "20-A:1", "20-A:5"]
+    },
+    {
+      "id": "i041",
+      "title": "Common-law writs (assumpsit, replevin, distraint) still operative as enforcement tools",
+      "category": "outdated",
+      "description": "Several procedural and tax-collection chapters still rely on common-law writ vocabulary that long ago lost its independent meaning. The tax department may 'distrain the personal estate, property interest, right or credit' (RSA 21-J:28-d, RSA 80:2, RSA 80:5). Co-tenants and creditors may bring 'an action of assumpsit' (RSA 507:2, 507:3, 511:15). 'Replevin' is preserved as a special-procedure carve-out under RSA 511-A:1 and RSA 511:38. Modern courts treat these forms as merged into general civil procedure, but the statutory text still requires litigants and tax officials to know the historical writ system to navigate the language.",
+      "quote": "The collector may distrain the goods, chattels, personal estate, property interest, right, or credit of such person or corporation...",
+      "refs": ["21-J:28-d", "80:2", "80:5", "507:2", "511:38", "511-A:1"]
+    },
+    {
+      "id": "i042",
+      "title": "'Forthwith' as a timing standard 200+ times — never defined",
+      "category": "ambiguity",
+      "description": "The word 'forthwith' appears in roughly 214 sections as a mandatory timing trigger — typically directing an officer or official to act 'forthwith' upon some event. It is nowhere defined in the code. Black's Law Dictionary distinguishes 'forthwith' from 'immediately' but NH case law treats them interchangeably. The result is that statutes commanding action 'forthwith' (e.g. RSA 4:26 directing arrest of a parole violator, RSA 4:27 directing return to the institution, RSA 16:3 directing the secretary of state to mail notice) provide no fixed window for compliance.",
+      "quote": "...the warden of the institution in which the prisoner was confined shall forthwith cause him to be arrested...",
+      "refs": ["4:26", "4:27", "16:3", "21-J:14-g"]
+    },
+    {
+      "id": "i043",
+      "title": "'Permanent' defined two materially different ways across chapters",
+      "category": "contradiction",
+      "description": "The single word 'permanent' carries different statutory definitions in unrelated chapters. The firefighter service-award program (RSA 100-B:2) defines 'permanent' as 'an individual regularly employed on a full-time basis by any fire department'. The Clean Air Act emissions-reduction chapter (RSA 125-J:1) defines 'permanent' as 'that the emissions reductions implemented for the generation and certification of an emission reduction credit are permanent'. The two definitions overlap only in being labelled 'permanent'; otherwise they describe entirely different concepts. A reader who relies on one chapter's definition while reading the other will be misled.",
+      "quote": "RSA 100-B:2: '\"Permanent\" means an individual regularly employed on a full-time basis by any fire department.' | RSA 125-J:1: '\"Permanent\" means that the emissions reductions implemented for the generation and certification of an emission reduction credit are permanent.'",
+      "refs": ["100-B:2", "125-J:1"]
+    },
+    {
+      "id": "i044",
+      "title": "'Court of competent jurisdiction' used 280+ times as a circular reference",
+      "category": "ambiguity",
+      "description": "The phrase 'court of competent jurisdiction' appears roughly 288 times across the NH code as the body that is supposed to take some defined action — for example RSA 5-C:24 paternity petitions, RSA 5-C:28 paternity rescissions, RSA 5-C:32 adoption recordings, RSA 5-C:33 birth-record amendments. The phrase is essentially circular: the court is competent if it has jurisdiction, and it has jurisdiction if it is competent. The code never enumerates what the controlling test is, leaving a citizen to consult procedural rules and case law to find the relevant court.",
+      "quote": "Such request shall be sent in the form of petition to a court of competent jurisdiction; and, if the court approves the request...",
+      "refs": ["5-C:24", "5-C:28", "5-C:32", "5-C:33"]
+    },
+    {
+      "id": "i045",
+      "title": "Misdemeanor classification rules in 625:9 are not consistently followed elsewhere",
+      "category": "contradiction",
+      "description": "RSA 625:9 sets up the classification system for misdemeanors: every misdemeanor is presumed to be class B unless the state files notice or specific elements apply. But other chapters write classification directly into substantive offences in ways that bypass the 625:9 default — for example RSA 638:1 declares 'Forgery is a class A misdemeanor if the writing is or purports to be a fake or counterfeit certificate of insurance' and 'all other forgery is a class B misdemeanor', without invoking the 625:9 'state files notice' procedure. The bail statute RSA 597:2 also draws lines between class A and class B misdemeanors for pre-trial detention without re-tracing the 625:9 logic. The classification system is therefore consistent on its face but inconsistent in practice.",
+      "quote": "RSA 625:9: 'Any crime designated within or outside this code as a misdemeanor without specification of the classification shall be presumed to be a class B misdemeanor unless... The state files a notice of intent to seek class A misdemeanor penalties on or before the date of arraignment.'",
+      "refs": ["597:2", "625:9", "638:1"]
+    },
+    {
+      "id": "i046",
+      "title": "'Speedy trial' invoked as a duty without statutory time bound",
+      "category": "ambiguity",
+      "description": "Several chapters require the state to ensure or secure a 'speedy trial' but never define how long is too long. RSA 632-A:9 directs the prosecutor in sexual-assault cases to 'take appropriate action to ensure a speedy trial to minimize the length of time the victim must endure the stress of involvement in the proceedings'. RSA 606-A:1 (interstate agreement on detainers) acknowledges 'difficulties in securing speedy trial of persons already incarcerated in other jurisdictions'. RSA 490:6-a allows emergency suspension of 'speedy trial procedures'. The absence of a fixed window means the constitutional right is the only working backstop.",
+      "quote": "...shall take appropriate action to ensure a speedy trial to minimize the length of time the victim must endure the stress of involvement in the prosecution.",
+      "refs": ["490:6-a", "606-A:1", "632-A:9"]
+    },
+    {
+      "id": "i047",
+      "title": "'Vested rights' recognised by statute but defined only by self-reference",
+      "category": "ambiguity",
+      "description": "Multiple chapters carve out exceptions for 'vested rights' but the term is defined only by paraphrase. RSA 4:39-d (state-real-estate leasing) and RSA 228:57-a (railroad-corridor leasing) both describe vested rights as 'incurring substantial liabilities in a reasonable good faith reliance on the absence of controlling law or regulation, known as vested rights, prior to January 1, 2011', then go on to say 'the following shall constitute sufficient evidence of vested rights...' without definitively listing what counts. RSA 463-A:23 invokes 'constitutionally vested rights' without specifying which. Because the carve-out is doctrinally significant, the imprecise definition matters.",
+      "quote": "...incurring substantial liabilities in a reasonable good faith reliance on the absence of controlling law or regulation, known as vested rights, prior to January 1, 2011...",
+      "refs": ["4:39-d", "99-E:9", "228:57-a", "463-A:23"]
+    },
+    {
+      "id": "i048",
+      "title": "'In due course' used as a timing standard with no fixed meaning",
+      "category": "ambiguity",
+      "description": "The phrase 'in due course' appears as a substantive timing or process trigger in five chapters: RSA 275:48 (employer book-keeping for withheld wages must be recorded 'openly, clearly, and in due course'); RSA 294-E:16 (UCC transferable-records concept of 'holder in due course'); RSA 318:51-f (research organisations must 'destroy all prescription drugs in due course'); RSA 352:7 (art-dealer disclosures, except 'a holder in due course'). The phrase is borrowed from common-law commercial doctrine and is not defined anywhere in the chapters that use it; reuse outside the UCC context (e.g. for drug destruction) imports doctrine that does not obviously fit.",
+      "quote": "...shall effectively destroy all prescription drugs in due course by means of conducting routine research operations or disposal by approved methods.",
+      "refs": ["275:48", "294-E:16", "318:51-f", "352:7"]
+    },
+    {
+      "id": "i049",
+      "title": "Time-reckoning statute privileges Sunday and Saturday under inconsistent labels",
+      "category": "ambiguity",
+      "description": "RSA 21:35 (the statewide statutory-construction time-computation rule) treats deadlines that fall on a 'Saturday, Sunday, or legal holiday' as deemed timely if filed on the next business day. Several proclamation statutes (e.g. RSA 4:13-h Gold Star Mother's Day, RSA 4:13-m Firefighters Memorial Day, RSA 4:13-r Blue Star Mother's Day) call out specific Sundays as named observances. None of these reference each other or use a uniform format; reading them together gives no clean answer to whether a deadline that lands on, say, the 'last Sunday in September' (proclaimed as Gold Star Mother's Day) is a holiday under RSA 21:35.",
+      "quote": "If the specified date falls on a Saturday, Sunday, or legal holiday, the document or fee shall be deemed timely filed if it is received by the next business day.",
+      "refs": ["4:13-h", "4:13-m", "4:13-r", "21:35"]
     }
   ]
 }
