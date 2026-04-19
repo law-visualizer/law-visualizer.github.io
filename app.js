@@ -896,6 +896,26 @@ function renderStats(laws, issues) {
         const el = document.getElementById(`stat-cat-${cat}`);
         if (el) el.textContent = issues.filter(i => i.category === cat).length;
     }
+
+    // Wire the primary stat cards to the issue-list filter + scroll
+    const filterAndScroll = (cat) => {
+        STATE.activeCategory = cat;
+        renderFilters(STATE.issues);
+        renderIssueList();
+        document.getElementById("issues").scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const totalCard = document.querySelector(".stat-total");
+    if (totalCard) {
+        totalCard.classList.add("clickable");
+        totalCard.onclick = () => filterAndScroll("all");
+    }
+    for (const cat of CATEGORY_ORDER) {
+        const card = document.querySelector(`.stat-cat.cat-${cat}`);
+        if (card) {
+            card.classList.add("clickable");
+            card.onclick = () => filterAndScroll(cat);
+        }
+    }
 }
 
 function issueCard(iss) {
