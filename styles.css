@@ -304,33 +304,57 @@ main {
     font-size: 0.9rem;
 }
 
-.ref-tree {
-    overflow: auto;
+/* Indented-list reference tree */
+.ref-tree-root,
+.ref-tree-children {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.ref-tree svg { display: block; }
-.ref-tree .node circle {
-    fill: var(--panel);
-    stroke: var(--accent);
-    stroke-width: 1.5;
-    cursor: pointer;
+.ref-tree-children {
+    margin-left: 0.85rem;
+    border-left: 1px dashed var(--border);
+    padding-left: 0.6rem;
 }
-.ref-tree .node.has-children circle { fill: var(--accent); }
-.ref-tree .node.is-root circle {
-    fill: var(--accent);
-    r: 6;
+.ref-tree-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.15rem 0;
+    font-size: 0.92rem;
+    line-height: 1.35;
 }
-.ref-tree .node text {
-    font-size: 11px;
-    fill: var(--fg);
+.ref-tree-toggle {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--accent);
     font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1;
+    width: 1.1rem;
+    text-align: center;
     cursor: pointer;
+    padding: 0;
+    user-select: none;
 }
-.ref-tree .node text:hover { fill: var(--accent); text-decoration: underline; }
-.ref-tree .link {
-    fill: none;
-    stroke: var(--border);
-    stroke-width: 1.2;
+.ref-tree-toggle.leaf {
+    color: var(--border);
+    cursor: default;
 }
+.ref-tree-label {
+    color: var(--fg);
+    text-decoration: none;
+    cursor: pointer;
+    word-break: break-word;
+}
+.ref-tree-label strong { color: var(--accent); }
+.ref-tree-label:hover strong { text-decoration: underline; }
+.ref-tree-heading { color: var(--fg); }
+.ref-tree-count   { color: var(--muted); font-size: 0.85em; }
+
+.ref-tree-node.is-root > .ref-tree-row { font-weight: bold; }
+.ref-tree-node.is-root > .ref-tree-row .ref-tree-label { cursor: default; }
 
 section {
     margin-bottom: 3.5rem;

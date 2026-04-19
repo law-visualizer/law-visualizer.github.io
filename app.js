@@ -644,66 +644,81 @@ function buildRefHierarchy(rootId, direction, maxDepth = 3) {
 
 function renderRefTree(rootId, direction, container) {
     const root = buildRefHierarchy(rootId, direction);
-    const sel = d3.select(container);
-    sel.selectAll("*").remove();
-
-    const hier = d3.hierarchy(root);
-    const nodeCount = hier.descendants().length;
-    const nodeHeight = 22;
-    const innerHeight = Math.max(180, nodeCount * nodeHeight);
-    const margin = { top: 12, right: 220, bottom: 12, left: 16 };
-    const width = (container.clientWidth || 600) - margin.left - margin.right;
-
-    const treeLayout = d3.tree().size([innerHeight, Math.max(120, width)]);
-    treeLayout(hier);
-
-    const svg = sel.append("svg")
-        .attr("width", Math.max(120, width) + margin.left + margin.right)
-        .attr("height", innerHeight + margin.top + margin.bottom);
-    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-
-    g.selectAll(".link")
-        .data(hier.links())
-        .enter()
-        .append("path")
-        .attr("class", "link")
-        .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
-
+    container.innerHTML = "";
     const collapsed = REF_COLLAPSED[direction];
-    const node = g.selectAll(".node")
-        .data(hier.descendants())
-        .enter()
-        .append("g")
-        .attr("class", d => "node"
-            + (d.data.id === rootId ? " is-root" : "")
-            + (d.data.childCount ? " has-children" : ""))
-        .attr("transform", d => `translate(${d.y},${d.x})`);
 
-    node.append("circle")
-        .attr("r", d => d.data.id === rootId ? 6 : (d.data.childCount ? 4 : 3))
-        .on("click", (event, d) => {
-            if (!d.data.childCount) return;
-            if (collapsed.has(d.data.path)) collapsed.delete(d.data.path);
-            else collapsed.add(d.data.path);
-            renderRefDirection(rootId, direction);
-        })
-        .append("title")
-        .text(d => d.data.childCount ? `Click to ${collapsed.has(d.data.path) ? "expand" : "collapse"} (${d.data.childCount} refs)` : "leaf");
+    function renderNode(node) {
+        const li = document.createElement("li");
+        li.className = "ref-tree-node"
+            + (node.id === rootId ? " is-root" : "")
+            + (node.childCount ? " has-children" : "");
 
-    node.append("text")
-        .attr("dy", "0.32em")
-        .attr("x", 8)
-        .attr("text-anchor", "start")
-        .text(d => {
-            const cnt = d.data.childCount && (!d.children || collapsed.has(d.data.path)) ? ` (${d.data.childCount})` : "";
-            const head = d.data.heading ? " — " + d.data.heading : "";
-            return `${d.data.id}${head}${cnt}`;
-        })
-        .on("click", (event, d) => {
-            if (d.data.id !== rootId) pickRefRoot(d.data.id);
-        })
-        .append("title")
-        .text(d => d.data.heading ? `${d.data.id} — ${d.data.heading}` : d.data.id);
+        const row = document.createElement("div");
+        row.className = "ref-tree-row";
+
+        // Toggle (only when there are children)
+        const toggle = document.createElement("button");
+        toggle.className = "ref-tree-toggle";
+        toggle.type = "button";
+        if (node.childCount) {
+            const isCollapsed = collapsed.has(node.path) || !node.children;
+            toggle.textContent = isCollapsed ? "▸" : "▾";
+            toggle.title = isCollapsed
+                ? `Expand (${node.childCount} ref${node.childCount === 1 ? "" : "s"})`
+                : `Collapse`;
+            toggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (collapsed.has(node.path)) collapsed.delete(node.path);
+                else collapsed.add(node.path);
+                renderRefDirection(rootId, direction);
+            });
+        } else {
+            toggle.textContent = "·";
+            toggle.classList.add("leaf");
+            toggle.disabled = true;
+        }
+        row.appendChild(toggle);
+
+        // Label — id + heading + count when collapsed
+        const label = document.createElement("a");
+        label.className = "ref-tree-label";
+        const idStrong = document.createElement("strong");
+        idStrong.textContent = node.id;
+        label.appendChild(idStrong);
+        if (node.heading) {
+            const h = document.createElement("span");
+            h.className = "ref-tree-heading";
+            h.textContent = " — " + node.heading;
+            label.appendChild(h);
+        }
+        if (node.childCount && (!node.children || collapsed.has(node.path))) {
+            const cnt = document.createElement("span");
+            cnt.className = "ref-tree-count";
+            cnt.textContent = ` (${node.childCount})`;
+            label.appendChild(cnt);
+        }
+        label.title = node.heading ? `${node.id} — ${node.heading}` : node.id;
+        if (node.id !== rootId) {
+            label.addEventListener("click", () => pickRefRoot(node.id));
+        }
+        row.appendChild(label);
+
+        li.appendChild(row);
+
+        if (node.children && !collapsed.has(node.path)) {
+            const ul = document.createElement("ul");
+            ul.className = "ref-tree-children";
+            for (const child of node.children) ul.appendChild(renderNode(child));
+            li.appendChild(ul);
+        }
+
+        return li;
+    }
+
+    const ul = document.createElement("ul");
+    ul.className = "ref-tree-root";
+    ul.appendChild(renderNode(root));
+    container.appendChild(ul);
 }
 
 function bindSearch() {
