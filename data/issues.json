@@ -457,6 +457,54 @@
       "description": "RSA 431:3 (fertilizer) defines 'distribute' as 'to import, consign, manufacture, produce, compound, mix, or blend fertilizer, or to offer for sale, sell, barter or supply'. RSA 433-A:3 (horticultural growing media) reduces it to 'to offer for sale, sell, barter, or exchange, or otherwise supply or make available' — dropping the manufacture and compounding steps. RSA 435:19 (commercial feed) returns to 'to offer for sale, sell, exchange, or barter, commercial feed, or to supply, furnish, or otherwise provide'. Whether a particular pre-sale activity (manufacturing, blending) is 'distribution' subject to registration and inspection depends on which subdivision applies.",
       "quote": "RSA 431:3: 'to import, consign, manufacture, produce, compound, mix, or blend fertilizer, or to offer for sale, sell, barter or supply' | RSA 433-A:3: 'to offer for sale, sell, barter, or exchange, or otherwise supply or make available'.",
       "refs": ["431:3", "433-A:3", "435:19"]
+    },
+    {
+      "id": "i066",
+      "title": "Boat-and-vessel definitions overlap and conflict across Title XXII navigation chapters",
+      "category": "contradiction",
+      "description": "Three closely related boating chapters define core terms differently. RSA 270:2 defines 'airboat' as 'any shallow-draft boat propelled by an airplane propeller'; RSA 270-E:2 defines it as 'any shallow-draft vessel propelled by an airplane propeller' — boat vs vessel matters for which registration regime applies. RSA 270-D:1 defines 'motorboat' as 'any vessel being propelled by machinery, whether or not such machinery is the principal source of propulsion', while RSA 270-E:2 defines it as 'a watercraft of any size equipped with propelling machinery'. RSA 270-D:1 defines 'vessel' as 'any type of watercraft used or capable of being used as a means of transportation on water, except a seaplane' but RSA 270-E:2 says 'every description of watercraft, other than seaplanes'. The chapters all regulate water craft, yet whether a particular hull is an 'airboat', 'motorboat', or 'vessel' depends on which RSA the enforcement officer cites.",
+      "quote": "RSA 270:2: '\"Airboat\" means any shallow-draft boat propelled by an airplane propeller...' | RSA 270-E:2: '\"Airboat\" means any shallow-draft vessel propelled by an airplane propeller...'",
+      "refs": ["270:2", "270-D:1", "270-E:2"]
+    },
+    {
+      "id": "i067",
+      "title": "Insolvency chapter triggers major remedies on the undefined word 'insolvent'",
+      "category": "ambiguity",
+      "description": "RSA 568, the insolvency-proceedings chapter, uses the word 'insolvent' as the substantive trigger for collection actions (RSA 568:11), avoidance of attachments (RSA 568:27), discharge of debts (RSA 568:37), fraud penalties (RSA 568:41), and issuance of a warrant to the sheriff (RSA 568:43) — but it never defines 'insolvent'. Federal bankruptcy law has a precise definition (assets less than liabilities, or unable to pay debts as they come due); NH case law floats between several formulations. A debtor who would qualify under one definition might not under another, leaving the meaning of the trigger to the discretion of the probate judge.",
+      "quote": "...if, being insolvent and having sufficient cause to believe himself so, the debtor has, within 6 months before...",
+      "refs": ["568:11", "568:27", "568:37", "568:41", "568:43"]
+    },
+    {
+      "id": "i068",
+      "title": "'Such other' catch-all language is the basis of broad delegated authority",
+      "category": "ambiguity",
+      "description": "Several chapters extend a regulator's or judge's power through trailing 'such other...' clauses that confer authority over an unspecified residue. RSA 124:4 (federal-aid agreements) authorises 'such other instruments, documents, and agreements as may be executed under the authority of this section'. RSA 124-A:2 (definitions for displacing-agency relocation) extends 'displacing activity' to 'such other displacing activity as may occur under a program or project'. RSA 124-A:5 lists triggers for replacement housing 'until such other event as the lead agency shall prescribe'. RSA 568:7 directs the probate judge to give 'such other notices as the judge may direct'; RSA 568:30 says assignees report 'at such other times as the judge may direct'. The pattern hands the substantive choice to the regulator without statutory boundary.",
+      "quote": "...and to publish and give such other notices as the judge may direct.",
+      "refs": ["124:4", "124-A:2", "124-A:5", "568:7", "568:30"]
+    },
+    {
+      "id": "i069",
+      "title": "'Goods and chattels' used as the substantive subject of execution levies, undefined",
+      "category": "ambiguity",
+      "description": "RSA 528:2 says 'Goods and chattels taken on execution shall be safely kept by the officer'; RSA 528:3 lets the owner redeem any 'goods and chattels' before sale; RSA 528:5 requires the officer to particularly describe 'the goods and chattels taken and sold'. 'Goods and chattels' is an archaic compound phrase that originally referred to all personal (i.e. movable) property excluding real estate; modern UCC drafting uses 'goods' alone, which has its own narrower statutory definition. The Title LIV execution chapters never define which sense applies, so it is ambiguous whether intangibles (e.g. accounts receivable, intellectual property) are within the levy.",
+      "quote": "Goods and chattels taken on execution shall be safely kept by the officer, at the expense of the debtor, 4 days at least before the sale...",
+      "refs": ["528:2", "528:3", "528:5"]
+    },
+    {
+      "id": "i070",
+      "title": "'Person' defined three different ways across uncovered chapters",
+      "category": "contradiction",
+      "description": "Three chapters that we had not previously mined each give an independent definition of 'person'. RSA 124-A:2 (federal-aid relocation) says 'any individual, partnership, corporation, or association'. RSA 270-A:1 (boating) extends the list to 'any individual, firm, co-partnership, company, association or joint-stock association, including any trustee, receiver, assignee, or personal representative'. RSA 270-D:1 (water-safety) outsources its definition entirely with 'person as defined in RSA 21:9'. Whether a trust, an LLC, or a partnership-in-name-only is a 'person' subject to a duty therefore varies by chapter, even though the underlying activity (operating a boat) might be the same.",
+      "quote": "RSA 270-A:1: '\"Person\" includes any individual, firm, co-partnership, company, association or joint-stock association, including any trustee, receiver, assignee, or personal representative...'",
+      "refs": ["124-A:2", "270-A:1", "270-D:1"]
+    },
+    {
+      "id": "i071",
+      "title": "'If necessary' as a conditional trigger leaves the test entirely with the actor",
+      "category": "ambiguity",
+      "description": "Several chapters condition mandatory state action on the phrase 'if necessary' without specifying who decides necessity, by what test, or subject to what review. RSA 184:108 directs the agriculture commissioner to spend dairy-premium funds 'if necessary'. RSA 270-D:2 requires a vessel that is the give-way craft to slacken speed, stop, or reverse 'if necessary' to avoid collision. RSA 306:9 authorises church officers to 'commence and prosecute a suit in the name of the church... if necessary'. The phrase shifts what should be a substantive standard into discretionary judgment by the same actor who is performing the duty.",
+      "quote": "When two power-driven vessels are crossing... it shall, if necessary, slacken its speed, stop, or reverse, and avoid crossing ahead of any other vessel.",
+      "refs": ["184:108", "270-D:2", "306:9"]
     }
   ]
 }
