@@ -209,8 +209,16 @@ function arcsDotsFrom(issues, unitIndicesForIssue) {
     for (const iss of issues) {
         const idxs = unitIndicesForIssue(iss).sort((a, b) => a - b);
         if (idxs.length === 0) continue;
+        const totalRefs = (iss.refs || []).length;
         if (idxs.length === 1) {
-            dots.push({ issue: iss, pos: idxs[0] });
+            // True single-ref issue → dot. A multi-ref issue whose refs all
+            // collapse to one unit at this zoom level → small self-loop so
+            // the visual grammar stays consistent (dots = atomic, arcs = links).
+            if (totalRefs <= 1) {
+                dots.push({ issue: iss, pos: idxs[0] });
+            } else {
+                arcs.push({ issue: iss, a: idxs[0], b: idxs[0], isLoop: true });
+            }
         } else {
             for (let a = 0; a < idxs.length; a++) {
                 for (let b = a + 1; b < idxs.length; b++) {
@@ -631,8 +639,26 @@ function renderArcChart(laws, issues) {
 
     // Arcs + dots
     const maxArcHeight = 150;
-    const maxSpan = d3.max(view.arcs, d => Math.abs(d.b - d.a)) || 1;
+    const nonLoopArcs = view.arcs.filter(d => !d.isLoop);
+    const maxSpan = d3.max(nonLoopArcs, d => Math.abs(d.b - d.a)) || 1;
+
+    // Stack self-loops vertically when multiple multi-ref issues collapse to the same unit
+    const loopStack = new Map();
+    for (const d of view.arcs) {
+        if (!d.isLoop) continue;
+        const n = loopStack.get(d.a) || 0;
+        d.loopIndex = n;
+        loopStack.set(d.a, n + 1);
+    }
+
     const arcPath = (d) => {
+        if (d.isLoop) {
+            const cx = x(d.a);
+            const r = 8;
+            const baseY = -10 - (d.loopIndex || 0) * 14;
+            // Small self-loop: half-circle above the tick
+            return `M ${cx - r} ${baseY} Q ${cx} ${baseY - 2 * r} ${cx + r} ${baseY}`;
+        }
         const x1 = x(d.a), x2 = x(d.b);
         const cx = (x1 + x2) / 2;
         const span = Math.abs(d.b - d.a);
@@ -644,7 +670,7 @@ function renderArcChart(laws, issues) {
         .data(view.arcs)
         .enter()
         .append("path")
-        .attr("class", d => `issue-arc cat-${d.issue.category}`)
+        .attr("class", d => `issue-arc cat-${d.issue.category}` + (d.isLoop ? " is-loop" : ""))
         .attr("data-issue", d => d.issue.id)
         .attr("data-cat", d => d.issue.category)
         .attr("d", arcPath)
