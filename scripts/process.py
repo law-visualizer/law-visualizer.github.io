@@ -143,6 +143,11 @@ def process_title(title):
         for fname in os.listdir(chap_dir):
             if fname == "toc.html" or not fname.endswith(".htm"):
                 continue
+            # Skip chapter merge/landing pages (e.g. "625-mrg.htm"). Their
+            # bold tag matches the first real section, so parsing them
+            # produces a duplicate of section :1.
+            if fname.endswith("-mrg.htm"):
+                continue
             fpath = os.path.join(chap_dir, fname)
             with open(fpath, encoding="utf-8") as f:
                 sec = parse_section(f.read(), title, chap, fname)

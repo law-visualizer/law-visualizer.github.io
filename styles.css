@@ -494,15 +494,22 @@ footer a { color: var(--accent); }
 
 .breadcrumb {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.35rem;
+    align-items: baseline;
     font-size: 0.9rem;
     margin: 0 0 0.75rem;
     padding: 0.5rem 0.75rem;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
+.breadcrumb > * { white-space: nowrap; }
+.breadcrumb.compact      { font-size: 0.8rem; }
+.breadcrumb.very-compact { font-size: 0.7rem; }
 
 .breadcrumb a {
     color: var(--accent);
@@ -603,26 +610,6 @@ footer a { color: var(--accent); }
 .arc-chapter-sep {
     stroke: #e4e0d5;
     stroke-dasharray: 2 3;
-}
-
-.title-band-line {
-    stroke: var(--accent);
-    stroke-width: 2;
-}
-
-.title-band-code {
-    font-size: 13px;
-    fill: var(--fg);
-    font-family: inherit;
-    font-weight: bold;
-    letter-spacing: 0.3px;
-}
-
-.title-band-name {
-    font-size: 10px;
-    fill: var(--muted);
-    font-family: inherit;
-    font-style: italic;
 }
 
 .issue-arc {

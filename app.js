@@ -231,6 +231,7 @@ function arcsDotsFrom(issues, unitIndicesForIssue) {
 function renderBreadcrumb(laws, previewLabel = null) {
     const nav = document.getElementById("arc-breadcrumb");
     nav.innerHTML = "";
+    nav.classList.remove("compact", "very-compact");
 
     const crumbs = [{ label: "All Titles", target: { level: "all" } }];
     if (STATE.zoomLevel === "title" || STATE.zoomLevel === "chapter") {
@@ -277,6 +278,13 @@ function renderBreadcrumb(laws, previewLabel = null) {
         span.textContent = previewLabel;
         nav.appendChild(span);
     }
+
+    // Auto-shrink the font when the rendered breadcrumb would otherwise wrap
+    // to a second line. We measure after layout via scrollWidth vs clientWidth.
+    requestAnimationFrame(() => {
+        if (nav.scrollWidth > nav.clientWidth) nav.classList.add("compact");
+        if (nav.scrollWidth > nav.clientWidth) nav.classList.add("very-compact");
+    });
 }
 
 // What the breadcrumb should preview when hovering a tick/label at the
@@ -506,12 +514,6 @@ function bindSearch() {
 
 // ---------------------------------------------------------------------------
 
-function niceTitleCase(s) {
-    return s.toLowerCase()
-        .replace(/\b[a-z]/g, ch => ch.toUpperCase())
-        .replace(/\b(And|Of|In|The|To|For|With|On)\b/g, w => w.toLowerCase());
-}
-
 function renderArcChart(laws, issues) {
     renderBreadcrumb(laws);
     const view = buildArcView(laws, issues);
@@ -524,10 +526,10 @@ function renderArcChart(laws, issues) {
         return;
     }
 
-    // Fit width to the container.
+    // Fit width to the container. The breadcrumb shows the current zoom
+    // context, so no in-chart title band is needed.
     const containerWidth = container.node().clientWidth || 1000;
-    const hasGroups = view.groups && view.groups.length > 0;
-    const margin = { top: hasGroups ? 190 : 170, right: 20, bottom: 60, left: 20 };
+    const margin = { top: 170, right: 20, bottom: 60, left: 20 };
     const innerWidth = Math.max(600, containerWidth - margin.left - margin.right);
     const tickGap = view.units.length <= 1 ? innerWidth / 2 : innerWidth / (view.units.length - 1);
 
@@ -537,31 +539,6 @@ function renderArcChart(laws, issues) {
         .attr("height", height);
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
     const x = (i) => view.units.length === 1 ? innerWidth / 2 : i * tickGap;
-    const approxWidth = (text, pxPerChar) => text.length * pxPerChar;
-
-    // Optional grouping band at top — single line "Title XX · Name"
-    if (hasGroups) {
-        const bandY = -150;
-        const band = g.selectAll(".title-band").data(view.groups).enter().append("g").attr("class", "title-band");
-        band.append("line")
-            .attr("class", "title-band-line")
-            .attr("x1", d => x(d.start) - tickGap * 0.3)
-            .attr("x2", d => x(d.end) + tickGap * 0.3)
-            .attr("y1", bandY).attr("y2", bandY);
-        band.append("text")
-            .attr("class", "title-band-code")
-            .attr("x", d => (x(d.start) + x(d.end)) / 2)
-            .attr("y", bandY - 8)
-            .attr("text-anchor", "middle")
-            .text(d => {
-                const nice = d.sublabel ? niceTitleCase(d.sublabel) : "";
-                const combined = nice ? `${d.label} · ${nice}` : d.label;
-                const spanPx = x(d.end) - x(d.start) + tickGap;
-                return approxWidth(combined, 6.5) <= spanPx - 4 ? combined : d.label;
-            })
-            .append("title")
-            .text(d => d.sublabel ? `${d.label} · ${d.sublabel}` : d.label);
-    }
 
     // Helper to sync hover state between tick and label sharing the same unit
     // key, and to preview the unit's full name in the breadcrumb.
