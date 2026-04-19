@@ -25,7 +25,7 @@
     <main>
         <section id="search" class="search-section">
             <h2>Search RSAs</h2>
-            <p>Search by RSA number (e.g. <code>625:11</code>, <code>632-A</code>) or by heading text (e.g. <code>rape</code>, <code>insanity</code>). Pick a result to view the full text and any associated issues.</p>
+            <p>Search by RSA number (e.g. <code>625:11</code>, <code>632-A</code>) or by heading text (e.g. <code>education</code>, <code>taxes</code>). Pick a result to view the full text and any associated issues.</p>
             <div class="search-bar">
                 <input type="text" id="rsa-search" placeholder="Start typing an RSA number or heading&hellip;" autocomplete="off" spellcheck="false">
                 <ul id="rsa-suggestions" class="suggestions" hidden></ul>
@@ -53,11 +53,37 @@
         <section id="connections">
             <h2>Connections</h2>
             <p>Ticks represent titles, chapters, or sections depending on zoom level. Arcs connect units that share an issue; dots mark issues confined to a single unit. <strong>To zoom in, click a label below the tick (or click a bar in &ldquo;By Title&rdquo; below). Use the breadcrumb to zoom out.</strong></p>
-            <div class="arc-controls">
-                <label><input type="checkbox" class="arc-cat" value="contradiction" checked> Contradictions</label>
-                <label><input type="checkbox" class="arc-cat" value="ambiguity" checked> Ambiguities</label>
-                <label><input type="checkbox" class="arc-cat" value="outdated" checked> Outdated</label>
-                <label><input type="checkbox" class="arc-cat" value="discrimination" checked> Discriminatory</label>
+            <div class="arc-toolbar">
+                <div class="arc-toggles" role="group" aria-label="Filter issue categories">
+                    <label class="arc-pill cat-contradiction"><input type="checkbox" class="arc-cat" value="contradiction" checked><span class="arc-pill-swatch"></span><span>Contradictions</span></label>
+                    <label class="arc-pill cat-ambiguity"><input type="checkbox" class="arc-cat" value="ambiguity" checked><span class="arc-pill-swatch"></span><span>Ambiguities</span></label>
+                    <label class="arc-pill cat-outdated"><input type="checkbox" class="arc-cat" value="outdated" checked><span class="arc-pill-swatch"></span><span>Outdated</span></label>
+                    <label class="arc-pill cat-discrimination"><input type="checkbox" class="arc-cat" value="discrimination" checked><span class="arc-pill-swatch"></span><span>Discriminatory</span></label>
+                </div>
+                <div class="arc-legend" aria-label="Chart legend">
+                    <span class="legend-item">
+                        <svg width="22" height="14" viewBox="0 0 22 14" aria-hidden="true">
+                            <line x1="11" y1="4" x2="11" y2="13" stroke="#444" stroke-width="1.5"/>
+                            <circle cx="11" cy="3" r="3" fill="var(--accent)"/>
+                        </svg>
+                        single-ref issue
+                    </span>
+                    <span class="legend-item">
+                        <svg width="22" height="14" viewBox="0 0 22 14" aria-hidden="true">
+                            <line x1="11" y1="6" x2="11" y2="13" stroke="#444" stroke-width="1.5"/>
+                            <path d="M 5 6 Q 11 -3 17 6" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+                        </svg>
+                        multi-ref, same unit
+                    </span>
+                    <span class="legend-item">
+                        <svg width="56" height="14" viewBox="0 0 56 14" aria-hidden="true">
+                            <line x1="6"  y1="7" x2="6"  y2="13" stroke="#444" stroke-width="1.5"/>
+                            <line x1="50" y1="7" x2="50" y2="13" stroke="#444" stroke-width="1.5"/>
+                            <path d="M 6 7 Q 28 -8 50 7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+                        </svg>
+                        multi-ref, spans units
+                    </span>
+                </div>
             </div>
             <nav id="arc-breadcrumb" class="breadcrumb"></nav>
             <div id="arc-chart"></div>
