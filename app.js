@@ -1239,8 +1239,15 @@ function renderFilters(issues) {
 
     const mkBtn = (key, label) => {
         const b = document.createElement("button");
-        b.className = "filter-btn" + (STATE.activeCategory === key ? " active" : "");
-        b.textContent = `${label} (${counts[key] || 0})`;
+        const catClass = key === "all" ? "cat-all" : `cat-${key}`;
+        b.className = `filter-btn ${catClass}` + (STATE.activeCategory === key ? " active" : "");
+        b.type = "button";
+        // Mirror the arc pill layout: colored swatch dot + label
+        const swatch = document.createElement("span");
+        swatch.className = "filter-btn-swatch";
+        const text = document.createElement("span");
+        text.textContent = `${label} (${counts[key] || 0})`;
+        b.append(swatch, text);
         b.onclick = () => {
             STATE.activeCategory = key;
             renderFilters(issues);

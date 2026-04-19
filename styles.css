@@ -477,21 +477,50 @@ section h2 {
     margin-bottom: 1.25rem;
 }
 
+/* Category filter pills — share the arc chart's visual language. */
 .filter-btn {
-    cursor: pointer;
+    --pill-color: var(--cat-other);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem 0.35rem 0.7rem;
     border: 1px solid var(--border);
-    background: var(--panel);
-    padding: 0.4rem 0.9rem;
     border-radius: 999px;
+    background: var(--panel);
+    color: var(--muted);
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 100ms, color 100ms, border-color 100ms;
+}
+.filter-btn.cat-all            { --pill-color: var(--accent); }
+.filter-btn.cat-contradiction  { --pill-color: var(--cat-contradiction); }
+.filter-btn.cat-ambiguity      { --pill-color: var(--cat-ambiguity); }
+.filter-btn.cat-outdated       { --pill-color: var(--cat-outdated); }
+.filter-btn.cat-discrimination { --pill-color: var(--cat-discrimination); }
+.filter-btn.cat-loophole       { --pill-color: var(--cat-loophole); }
+.filter-btn.cat-broken-ref     { --pill-color: var(--cat-broken-ref); }
+
+.filter-btn-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--pill-color);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
 }
 
 .filter-btn.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
+    background: var(--pill-color);
+    color: #fff;
+    border-color: var(--pill-color);
 }
+.filter-btn.active .filter-btn-swatch {
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+.filter-btn:hover { border-color: var(--pill-color); }
 
 .issue-card {
     background: var(--panel);
