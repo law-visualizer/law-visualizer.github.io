@@ -89,11 +89,13 @@ function buildArcView(laws, issues) {
     }
 
     if (STATE.zoomLevel === "all") {
-        // Units = titles
+        // Units = titles. Drop the "Title " prefix when there are many titles
+        // so the rotated labels stay tight; keep the full label in the tooltip.
+        const dense = laws.titles.length > 20;
         const units = laws.titles.map((t, i) => ({
             i,
             key: t.id,
-            label: `Title ${t.id}`,
+            label: dense ? t.id : `Title ${t.id}`,
             sublabel: t.name,
             tooltip: `Title ${t.id} — ${t.name}\n${t.chapters.length} chapters`,
             zoomTarget: { level: "title", title: t.id },
@@ -591,14 +593,18 @@ function renderArcChart(laws, issues) {
         .append("title")
         .text(d => d.tooltip || d.label);
 
-    // Tick labels — match the bar chart's rotation direction (-35° with end anchor).
+    // Tick labels — adapt rotation/font to density so all labels remain visible.
+    const dense = view.units.length > 20;
+    const labelRotation = dense ? -60 : -35;
+    const labelFontPx = dense ? 10 : 12;
+    const charPx = dense ? 5.8 : 7.2;
     const labelGroup = g.selectAll(".chapter-label-group")
         .data(view.units)
         .enter()
         .append("g")
         .attr("class", "chapter-label-group" + (view.zoomable ? " zoomable" : "") + " link-label")
         .attr("data-unit", d => d.key)
-        .attr("transform", d => `translate(${x(d.i)}, 14) rotate(-35)`)
+        .attr("transform", d => `translate(${x(d.i)}, 14) rotate(${labelRotation})`)
         .on("click", (event, d) => {
             event.stopPropagation();
             if (view.zoomable && d.zoomTarget) zoomTo(d.zoomTarget);
@@ -609,15 +615,16 @@ function renderArcChart(laws, issues) {
     // Background hit-rect — covers the rotated label footprint
     labelGroup.append("rect")
         .attr("class", "chapter-label-hit")
-        .attr("x", d => -(d.label.length * 7.2 + 4))
-        .attr("y", -11)
-        .attr("width", d => d.label.length * 7.2 + 4)
-        .attr("height", 15)
+        .attr("x", d => -(d.label.length * charPx + 4))
+        .attr("y", -labelFontPx)
+        .attr("width", d => d.label.length * charPx + 4)
+        .attr("height", labelFontPx + 4)
         .attr("fill", "transparent");
 
     labelGroup.append("text")
         .attr("class", "chapter-label")
         .attr("text-anchor", "end")
+        .style("font-size", labelFontPx + "px")
         .text(d => d.label)
         .append("title")
         .text(d => d.tooltip || d.label);
@@ -748,7 +755,8 @@ function renderTitleBarChart(laws, issues) {
     container.selectAll("*").remove();
 
     const containerWidth = container.node().clientWidth || 1000;
-    const margin = { top: 20, right: 20, bottom: 70, left: 40 };
+    const denseLabels = data.length > 20;
+    const margin = { top: 20, right: 20, bottom: denseLabels ? 90 : 70, left: 40 };
     const width = containerWidth - margin.left - margin.right;
     const height = 260;
 
@@ -783,14 +791,20 @@ function renderTitleBarChart(laws, issues) {
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x).tickFormat(() => ""));
 
-    // Custom x-axis labels — same look as the arc chart (hit-rect + rotated text)
+    // Custom x-axis labels — same density adaptation as the arc chart.
+    const dense = data.length > 20;
+    const labelRotation = dense ? -60 : -35;
+    const labelFontPx = dense ? 10 : 12;
+    const charPx = dense ? 5.8 : 7.2;
+    const labelText = (d) => dense ? d.title : `Title ${d.title}`;
+
     const xLabels = g.selectAll(".chapter-label-group")
         .data(data)
         .enter()
         .append("g")
         .attr("class", "chapter-label-group link-label")
         .attr("data-unit", d => d.title)
-        .attr("transform", d => `translate(${x(d.title) + x.bandwidth() / 2}, ${height + 14}) rotate(-35)`)
+        .attr("transform", d => `translate(${x(d.title) + x.bandwidth() / 2}, ${height + 14}) rotate(${labelRotation})`)
         .on("click", (event, d) => {
             zoomTo({ level: "title", title: d.title });
             document.getElementById("connections").scrollIntoView({ behavior: "smooth" });
@@ -799,16 +813,17 @@ function renderTitleBarChart(laws, issues) {
 
     xLabels.append("rect")
         .attr("class", "chapter-label-hit")
-        .attr("x", d => -(`Title ${d.title}`.length * 7.2 + 4))
-        .attr("y", -11)
-        .attr("width", d => `Title ${d.title}`.length * 7.2 + 4)
-        .attr("height", 15)
+        .attr("x", d => -(labelText(d).length * charPx + 4))
+        .attr("y", -labelFontPx)
+        .attr("width", d => labelText(d).length * charPx + 4)
+        .attr("height", labelFontPx + 4)
         .attr("fill", "transparent");
 
     xLabels.append("text")
         .attr("class", "chapter-label")
         .attr("text-anchor", "end")
-        .text(d => `Title ${d.title}`)
+        .style("font-size", labelFontPx + "px")
+        .text(labelText)
         .append("title")
         .text(d => `Title ${d.title} — ${d.name}`);
 
