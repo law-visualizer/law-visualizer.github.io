@@ -505,6 +505,54 @@
       "description": "Several chapters condition mandatory state action on the phrase 'if necessary' without specifying who decides necessity, by what test, or subject to what review. RSA 184:108 directs the agriculture commissioner to spend dairy-premium funds 'if necessary'. RSA 270-D:2 requires a vessel that is the give-way craft to slacken speed, stop, or reverse 'if necessary' to avoid collision. RSA 306:9 authorises church officers to 'commence and prosecute a suit in the name of the church... if necessary'. The phrase shifts what should be a substantive standard into discretionary judgment by the same actor who is performing the duty.",
       "quote": "When two power-driven vessels are crossing... it shall, if necessary, slacken its speed, stop, or reverse, and avoid crossing ahead of any other vessel.",
       "refs": ["184:108", "270-D:2", "306:9"]
+    },
+    {
+      "id": "i072",
+      "title": "'Minor' means three different ages depending on the chapter",
+      "category": "contradiction",
+      "description": "The single word 'minor' is defined to mean three materially different ages across the code. RSA 571-B:1 (exposing minors to harmful material) defines 'minor' as 'any person under the age of 18 years'. RSA 126-K:2 (controlled drugs and tobacco) defines 'minor' as 'a person under the age of 21'. RSA 507-F:1 (alcohol-related civil liability) defines 'minor' as 'any person under the legal age to purchase alcoholic beverages' — i.e. the alcohol-purchase age, currently 21 but historically 18. A 19-year-old is therefore a 'minor' under one chapter, an adult under another, and possibly either under a third depending on its drafting era.",
+      "quote": "RSA 571-B:1: '\"Minor\" means any person under the age of 18 years.' | RSA 126-K:2: '\"Minor\" means a person under the age of 21.'",
+      "refs": ["126-K:2", "507-F:1", "571-B:1"]
+    },
+    {
+      "id": "i073",
+      "title": "'Adult' defined inconsistently — 18 in some chapters, alcohol-purchase age in others",
+      "category": "contradiction",
+      "description": "The mirror-image definition of 'adult' suffers the same conflict. RSA 631:8 (criminal-restraint elderly-victim aggravator) defines 'adult' as 'any person who is 18 years of age or older'. RSA 161-F:1 (adult protective services) uses the same '18 years of age or older' formulation. RSA 651-A:26 (parole-supervision) frames 'adult' as 'both individuals legally classified as adults and juveniles treated as adults by court order, statute or other authority' — circular. RSA 507-F:1 defines 'adult' as 'any person of legal age to purchase alcoholic beverages, or older as defined by RSA 175:1, I' — i.e. age 21. A 19-year-old is an adult for criminal-restraint purposes but not for alcohol civil-liability purposes.",
+      "quote": "RSA 631:8: '\"Adult\" means any person who is 18 years of age or older.' | RSA 507-F:1: '\"Adult\" means any person of legal age to purchase alcoholic beverages, or older as defined by RSA 175:1, I.'",
+      "refs": ["161-F:1", "507-F:1", "631:8", "651-A:26"]
+    },
+    {
+      "id": "i074",
+      "title": "'Motor vehicle' defined seven different ways across tax, traffic, and dealer chapters",
+      "category": "contradiction",
+      "description": "The term 'motor vehicle' is independently defined in seven chapters. RSA 78-A:3 (rooms and meals tax) defines it for excise purposes. RSA 236:112 (traffic regulation on highways) outsources to RSA 259:60. RSA 357-C:1 (motor vehicle dealer law) requires the vehicle to be 'manufactured and designed primarily for use and operation on the public highways'. RSA 357-E:1 (lemon law) outsources to RSA 357-C:1. None of these definitions cross-reference RSA 21:31-a, the supposedly statewide-default definition. A custom-built off-road utility vehicle could be a 'motor vehicle' for tax purposes, not for dealer-licensing, and back to being one for traffic purposes — depending on which chapter the regulator picks up.",
+      "quote": "RSA 78-A:3: 'a self-propelled vehicle designed to transport persons or property on a public highway that is required to be registered...' | RSA 357-C:1: 'every self-propelled vehicle manufactured and designed primarily for use and operation on the public highways'.",
+      "refs": ["78-A:3", "236:112", "357-C:1", "357-E:1"]
+    },
+    {
+      "id": "i075",
+      "title": "'Victim' defined in materially different ways across criminal, restitution, and identity-theft chapters",
+      "category": "contradiction",
+      "description": "Eleven chapters define 'victim' independently. RSA 21-M:8-b (crime-victim compensation) defines it as 'a person who suffers direct or threatened physical, emotional or psychological harm as the result of the commission of a crime'. RSA 507-I:1 (wrongful-death civil suits) restricts 'victim' to 'the estate of the person who was murdered, or the immediate family of the person murdered'. RSA 638:25 (identity theft) extends 'victim' to 'any person whose personal identifying information has been unlawfully obtained or recorded'. RSA 632-A:10-b uses RSA 21-M:8-b by reference — but only that one chapter's definition. Whether a witness, family member, or business is a 'victim' for a particular procedural right depends on which definition controls.",
+      "quote": "RSA 21-M:8-b: 'a person who suffers direct or threatened physical, emotional or psychological harm as the result of the commission of a crime' | RSA 507-I:1: 'the estate of the person who was murdered, or the immediate family of the person murdered'.",
+      "refs": ["21-M:8-b", "507-I:1", "632-A:10-b", "638:25"]
+    },
+    {
+      "id": "i076",
+      "title": "'Employee' defined twelve different ways across tax, labor, and law-enforcement chapters",
+      "category": "contradiction",
+      "description": "At least twelve chapters define 'employee' for their own purposes. RSA 77-E:1 (business-enterprise tax) outsources to 'an employee as defined in section 3401(c) of the United States Internal Revenue Code' — the federal withholding test. RSA 106-B:1 (state police) restricts the term to 'any employee of the division of state police'. RSA 106-F:2 (private investigators / security guards) defines an employee as 'an individual employed by a private investigative agency or an individual employed by a security guard agency'. The three formulations overlap on form W-2 employees but diverge on contractors, dual-employed individuals, and government workers — meaning the same person can be an 'employee' for tax purposes but not for labor-classification purposes, with material consequences for liability and benefits.",
+      "quote": "RSA 77-E:1: 'an employee as defined in section 3401(c) of the United States Internal Revenue Code' | RSA 106-B:1: 'any employee of the division of state police'.",
+      "refs": ["77-E:1", "106-B:1", "106-F:2"]
+    },
+    {
+      "id": "i077",
+      "title": "Spite-fence statute hinges on the undefined motives 'unnecessarily' and 'for the purpose of annoying'",
+      "category": "ambiguity",
+      "description": "RSA 476:1 declares it a private nuisance to erect or maintain any fence or fence-like structure 'unnecessarily exceeding 5 feet in height' and built 'for the purpose of annoying the owners or occupants of adjoining property'. Both modifiers are pure subjective standards: 'unnecessarily' has no objective baseline (necessary for what?), and 'for the purpose of annoying' requires proof of motive that is essentially never directly available. The remedy, RSA 476:3, then imposes a $10-per-day penalty — itself unindexed since at least the early 20th century. The provision has been on the books since 1887.",
+      "quote": "Any fence or other structure in the nature of a fence, unnecessarily exceeding 5 feet in height, erected or maintained for the purpose of annoying the owners or occupants of adjoining property shall be deemed a private nuisance.",
+      "refs": ["476:1", "476:2", "476:3"]
     }
   ]
 }
