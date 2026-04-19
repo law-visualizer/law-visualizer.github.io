@@ -201,6 +201,54 @@
       "description": "The phrase 'satisfactory evidence', 'satisfactory proof', or 'satisfactory showing' appears in roughly 100 sections across the NH code as the trigger for agency or court action — for example RSA 21-I:35 (state-employee insurance eligibility), RSA 21-P:29 (firefighter certification), RSA 482-B:5 (well-contractor licensure), RSA 514:3 and 514:6 (service of process). It is nowhere defined, and NH case law treats it as a free-standing substantive standard distinct from both 'preponderance' and 'clear and convincing'. The result is a patchwork where the same language can mean very different things depending on the chapter.",
       "quote": "...upon satisfactory evidence that the order has been complied with, the notice shall be sufficient.",
       "refs": ["21-I:35", "21-P:29", "482-B:5", "514:3", "514:6"]
+    },
+    {
+      "id": "i034",
+      "title": "'Building' defined four incompatible ways across the code",
+      "category": "contradiction",
+      "description": "The single word 'building' is given materially different statutory definitions depending on which chapter you are in. RSA 153:1 (state fire code) defines it as 'any structure, framework or housing, public or private, excluding single family dwellings as defined in paragraph X'. RSA 155-A:1 (state building code) defines 'building' by reference to the International Building Code adopted under RSA 155-A. RSA 227-M:2 (forestry / cultural resources) defines 'building' anthropologically as 'a construction made by humans and created to shelter human activity'. RSA 479-A:1 (condominiums) requires 'a building or group of buildings having a total of 5 or more units'. The same physical structure can therefore be a 'building' for some statutory purposes and not for others, with no cross-reference reconciling them.",
+      "quote": "RSA 153:1: 'any structure, framework or housing... excluding single family dwellings...' | RSA 227-M:2: 'a construction made by humans and created to shelter human activity'.",
+      "refs": ["153:1", "155-A:1", "227-M:2", "479-A:1"]
+    },
+    {
+      "id": "i035",
+      "title": "'Dealer' defined inconsistently — and twice with overlapping subject matter",
+      "category": "contradiction",
+      "description": "At least five chapters give independent definitions of 'dealer'. RSA 637:7 (theft offences) calls a dealer 'a person in the business of buying or selling goods'. RSA 339-C:1 narrows it to gasoline retailers. RSA 358-F:1 narrows it to used-motor-vehicle retailers. The two off-highway vehicle / snowmobile chapters — RSA 215-A:1 and RSA 215-C:1 — each define 'dealer' for OHRV/snowmobile sales but in subtly different language, even though their subject matter overlaps. There is no master definition controlling, so whether someone is a 'dealer' subject to a regulatory scheme can depend on which RSA the prosecutor or agency invokes.",
+      "quote": "RSA 215-A:1: 'a person in the OHRV or snowmobile business who sells OHRVs to the general public...' | RSA 215-C:1: 'a person in the snowmobile or OHRV business who sells snowmobiles...'",
+      "refs": ["215-A:1", "215-C:1", "339-C:1", "358-F:1", "637:7"]
+    },
+    {
+      "id": "i036",
+      "title": "Arrest-procedure timing turns on undefined 'without unreasonable delay'",
+      "category": "ambiguity",
+      "description": "RSA 594:19-a (detention of person arrested) and RSA 594:20-a (place and time of detention) require an officer who arrests a person without a warrant to bring them before a court 'without unreasonable delay', and elsewhere fix a 36-hour cap. Neither 'unreasonable' nor the relationship between the open-textured 'without unreasonable delay' standard and the 36-hour absolute limit is defined: a 24-hour delay could be 'unreasonable' under one chapter's facts and not under another's. The phrase appears 26 times across the code in similar mandatory-action contexts.",
+      "quote": "An officer arresting a person without a warrant shall without unreasonable delay take the accused to the court... All persons shall appear no later than 36 hours after arrest...",
+      "refs": ["594:19-a", "594:20-a", "594:26"]
+    },
+    {
+      "id": "i037",
+      "title": "Juvenile-justice and child-welfare decisions hinge on the undefined 'best interest of the child'",
+      "category": "ambiguity",
+      "description": "Across child-welfare and juvenile-justice statutes, transfers, diversions, releases, and discharges all turn on whether a court or agency finds the action 'in the best interest of the child' (or minor, or obligee). Examples: RSA 169-B:5 (venue transfer for delinquency cases), RSA 169-B:10 (juvenile diversion), RSA 169-B:22-a (notice to school of out-of-home placement), RSA 161-B:4 (child-support payee changes), RSA 621:19 (releases by youth services board). The phrase is nowhere statutorily defined; courts apply ad-hoc multi-factor tests that vary by judge.",
+      "quote": "...if the court finds upon the motion of any party that it is in the best interest of the child, obligee, or obligor to do so.",
+      "refs": ["161-B:4", "169-B:5", "169-B:10", "169-B:22-a", "621:19"]
+    },
+    {
+      "id": "i038",
+      "title": "'Notwithstanding any other provision of law' used 400+ times, eroding statutory coherence",
+      "category": "ambiguity",
+      "description": "The phrase 'notwithstanding any other provision of law' appears in roughly 416 sections across the NH code. Each occurrence functions as a wildcard override of the surrounding statutory framework — granting a single section primacy over an unbounded set of other rules without enumerating which ones. The cumulative effect is hard for any reader (citizen, lawyer, or agency) to map: knowing what RSA X says no longer tells you what is actually controlling, because some other RSA Y may be a 'notwithstanding' carve-out. Examples: RSA 4:6-a (secretary of state office space), RSA 4:9-a (memorial siting), RSA 4-A:4 (compensation rules), RSA 5:6-d (election fund). The pattern is most concentrated in budget, election, and tax statutes.",
+      "quote": "Notwithstanding any other provision of law to the contrary, the following shall be assigned for use by the secretary of state...",
+      "refs": ["4:6-a", "4:9-a", "4-A:4", "5:6-d"]
+    },
+    {
+      "id": "i039",
+      "title": "Open-textured 'sufficient cause' is the trigger for very different remedies",
+      "category": "ambiguity",
+      "description": "The same phrase 'sufficient cause' (or 'good and sufficient cause') functions as the trigger for incompatible kinds of action across the code: dismissal of city watchmen and constables (RSA 47:14), denial of a well-contractor's license (RSA 482-B:8), forfeiture of a juror's per-diem pay (RSA 500-A:19), late filing of a writ of error (RSA 508:7), discharge of a person on habeas corpus (RSA 534:22), and probate-court appearances by sick parties (RSA 547:20). The standard is nowhere defined; whether a particular reason is 'sufficient' depends entirely on the discretion of the deciding officer.",
+      "quote": "Any person who, without sufficient cause, neglects to attend court after having been selected as a juror and duly notified...",
+      "refs": ["47:14", "482-B:8", "500-A:19", "508:7", "534:22", "547:20"]
     }
   ]
 }
