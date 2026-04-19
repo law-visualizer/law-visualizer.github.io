@@ -553,6 +553,62 @@
       "description": "RSA 476:1 declares it a private nuisance to erect or maintain any fence or fence-like structure 'unnecessarily exceeding 5 feet in height' and built 'for the purpose of annoying the owners or occupants of adjoining property'. Both modifiers are pure subjective standards: 'unnecessarily' has no objective baseline (necessary for what?), and 'for the purpose of annoying' requires proof of motive that is essentially never directly available. The remedy, RSA 476:3, then imposes a $10-per-day penalty — itself unindexed since at least the early 20th century. The provision has been on the books since 1887.",
       "quote": "Any fence or other structure in the nature of a fence, unnecessarily exceeding 5 feet in height, erected or maintained for the purpose of annoying the owners or occupants of adjoining property shall be deemed a private nuisance.",
       "refs": ["476:1", "476:2", "476:3"]
+    },
+    {
+      "id": "i078",
+      "title": "'Deemed necessary' / 'deemed appropriate' / 'deemed expedient' used 790+ times to delegate judgment to the actor",
+      "category": "ambiguity",
+      "description": "Across the NH code, the construction 'as the [official] deems necessary / appropriate / expedient / advisable' appears in roughly 795 sections. Each occurrence converts what would otherwise be a substantive statutory test into a unilateral judgment by the actor charged with making the decision — there is no enumerated factor, no review standard, and no required record. RSA 4:5 lets the governor make appointments 'as the governor and council may from time to time deem expedient'. RSA 4:9-b authorises a memorial committee to spend funds for 'any other purpose deemed appropriate by the committee'. The same pattern recurs in budget, licensing, and procedural statutes throughout the code.",
+      "quote": "...for the purpose of constructing the memorial, or for any other purpose deemed appropriate by the committee.",
+      "refs": ["4:5", "4:9-b", "4:9-j", "4:9-o"]
+    },
+    {
+      "id": "i079",
+      "title": "'Employer' has dramatically different size thresholds across labor and family statutes",
+      "category": "contradiction",
+      "description": "Different chapters set very different thresholds for what counts as an 'employer'. RSA 110-C:1-a (military reemployment rights) restricts the term to 'any person, company, corporation, or organization that employs 50 or more individuals at the same location'. RSA 161-H:1 (employment of public-assistance recipients) and RSA 458-B:1 (income withholding for child support) sweep in 'any person, firm, corporation, or association, or any political subdivision or department of the state' — i.e. any person who employs anyone. RSA 77-E:1 (business-enterprise tax) outsources entirely to 'an employer as defined in section 3401(d) of the United States Internal Revenue Code'. A 12-person business may therefore be an 'employer' for child-support withholding but not for military-reemployment protection.",
+      "quote": "RSA 110-C:1-a: '...any person, company, corporation, or organization that employs 50 or more individuals at the same location...' | RSA 458-B:1: 'any person, firm, corporation, or association, or any political subdivision or department of the state...'",
+      "refs": ["77-E:1", "110-C:1-a", "161-H:1", "458-B:1"]
+    },
+    {
+      "id": "i080",
+      "title": "'Financial institution' defined five different ways across criminal, fiduciary, and licensing chapters",
+      "category": "contradiction",
+      "description": "The phrase 'financial institution' has independent definitions in five chapters. RSA 637:10 (criminal theft) sweeps broadly: 'a bank, insurance company, credit union, safety deposit company, savings and loan association'. RSA 162-A:2 (state business finance authority) restricts it to 'any bank, trust company, or other organization that is in the business of making loans'. RSA 463-A:1 (uniform transfers to minors) lists 'a bank, trust company, savings institution, or credit union, chartered and supervised under federal or NH law'. RSA 310-B:2 outsources to the federal Federal Deposit Insurance Act definition. A non-bank lender that finances NH businesses can be a 'financial institution' for one purpose and not another, with material consequences for licensing and criminal liability.",
+      "quote": "RSA 637:10: '\"Financial institution\" means a bank, insurance company, credit union, safety deposit company, savings and loan association...' | RSA 162-A:2: 'any bank, trust company, or other organization that is in the business of making loans...'",
+      "refs": ["162-A:2", "310-B:2", "463-A:1", "637:10"]
+    },
+    {
+      "id": "i081",
+      "title": "'Resident' means residence-by-domicile in some chapters, residence-in-a-facility in others",
+      "category": "contradiction",
+      "description": "'Resident' is defined six different ways. The trust chapter (RSA 564-B:1-103) uses the classic domicile test: 'an individual who is domiciled in the state or jurisdiction in which he or she has his or her place of habitation'. RSA 151-H:1 (assisted-living facilities) means 'an individual who resides in a facility' — the facility-residency test. RSA 161-F:11 (elder-protective services) requires both the facility test and the threshold age '60 years of age or older'. RSA 161-J:2 (assisted-living-residence compliance) says 'an adult who resides in an assisted living residence or housing for older persons'. The same individual may be a 'resident' for state-trust purposes (because domiciled here) and not a 'resident' for elder-services purposes (because not in a covered facility, or under 60).",
+      "quote": "RSA 564-B:1-103: 'an individual who is domiciled in the state...' | RSA 151-H:1: 'an individual who resides in a facility as defined in RSA 151-H:1, V'.",
+      "refs": ["151-H:1", "161-F:11", "161-J:2", "564-B:1-103"]
+    },
+    {
+      "id": "i082",
+      "title": "'In the discretion of' / 'in its sole discretion' used 280+ times to convert substantive standards into pure judgment",
+      "category": "ambiguity",
+      "description": "Roughly 280 sections of the code condition state action on what some official does 'in his discretion', 'in its sole discretion', or similar. RSA 4:2 lets the governor 'in their discretion declare the office of such trustee vacant'. RSA 6:13 lets the treasurer borrow 'in the discretion of the treasurer'. RSA 7:11 puts the attorney general's exclusive control over duties 'in the discretion of the latter'. RSA 7:16-a lets the AG fill positions 'in his discretion' even when a candidate lacks the prerequisites. None of these chapters define what 'discretion' means or what factors must be considered, leaving the substantive content of these duties to whoever holds the office.",
+      "quote": "...the governor and council may, after investigation of the cause of such absence, in their discretion declare the office of such trustee vacant...",
+      "refs": ["4:2", "6:13", "7:11", "7:16-a"]
+    },
+    {
+      "id": "i083",
+      "title": "'Good cause shown' used 150+ times as the trigger for unrelated remedies",
+      "category": "ambiguity",
+      "description": "The phrase 'good cause shown' is the substantive trigger for an enormous variety of state actions: excused legislative absence (RSA 14:26), dismissal of the legislative budget assistant (RSA 14:33), assistant appointments (RSA 14:34), and tax filing extensions (RSA 21-J:3). It is the same phrase doing very different jobs, never defined or anchored, leaving the deciding officer to invent the standard each time.",
+      "quote": "...by vote of the fiscal committee for good cause shown in a complaint brought by the said committee.",
+      "refs": ["14:26", "14:33", "14:34", "21-J:3"]
+    },
+    {
+      "id": "i084",
+      "title": "'Cohabit' / 'cohabiting' used inconsistently across retirement, support, parentage, and domestic violence",
+      "category": "contradiction",
+      "description": "The term 'cohabit' (or 'cohabitating') appears in at least four substantively different contexts with no shared definition. RSA 102:16 awards retirement benefits in priority order to 'legal wife cohabiting with member retiring'. RSA 167:79 (employment program for public-assistance recipients) refers to 'cohabitating adults who share a minor child'. RSA 168-B:2 (parent-child relationship) measures cohabitation 'within 300 days after the termination of cohabitation'. RSA 173-B:1 (domestic violence) defines a covered relationship as 'persons cohabiting with each other, and persons who cohabited with each other but who no longer share the same residence'. None of these uses cross-reference each other, so the threshold of 'cohabitation' (overnight stays? shared utilities? shared household?) shifts by chapter.",
+      "quote": "RSA 173-B:1: '\"Family or household members\" means: ... persons cohabiting with each other, and persons who cohabited with each other but who no longer share the same residence...'",
+      "refs": ["102:16", "167:79", "168-B:2", "173-B:1"]
     }
   ]
 }
