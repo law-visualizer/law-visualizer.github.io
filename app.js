@@ -39,6 +39,18 @@ async function getTitleShard(titleId) {
     return t;
 }
 
+// True when a section heading or chapter name is just a repeal marker
+// (e.g. "Repealed by 1985, 399:24, I, eff. July 1, 1985" or
+// "Chapter 570 Repealed" or "to 3:7-c Repealed by 1977..."). Used to
+// dim the corresponding ticks/labels in the arc chart.
+function isRepealedHeading(s) {
+    return /\brepealed\b/i.test(s || "");
+}
+function isRepealedChapter(c) {
+    if (isRepealedHeading(c.name)) return true;
+    return c.sections.length > 0 && c.sections.every(s => isRepealedHeading(s.heading));
+}
+
 function sectionIndex(laws) {
     if (STATE.sectionIdx) return STATE.sectionIdx;
     const idx = new Map();
@@ -104,14 +116,18 @@ function buildArcView(laws, issues) {
         const t = laws.titles.find(t => t.id === STATE.zoomTitle);
         if (!t) return { units: [], groups: [], arcs: [], dots: [], zoomable: false };
 
-        const units = t.chapters.map((c, i) => ({
-            i,
-            key: `${t.id}/${c.id}`,
-            label: c.id,
-            sublabel: c.name,
-            tooltip: `${t.id} Chapter ${c.id}${c.name ? ": " + c.name : ""}\n${c.sections.length} sections`,
-            zoomTarget: { level: "chapter", title: t.id, chapter: c.id },
-        }));
+        const units = t.chapters.map((c, i) => {
+            const repealed = isRepealedChapter(c);
+            return {
+                i,
+                key: `${t.id}/${c.id}`,
+                label: (repealed ? "✕ " : "") + c.id,
+                sublabel: c.name,
+                tooltip: `${t.id} Chapter ${c.id}${c.name ? ": " + c.name : ""}${repealed ? " (repealed)" : ""}\n${c.sections.length} sections`,
+                zoomTarget: { level: "chapter", title: t.id, chapter: c.id },
+                repealed,
+            };
+        });
         const keyIdx = new Map(units.map(u => [u.key, u.i]));
 
         const { arcs, dots } = arcsDotsFrom(issues, iss => {
@@ -146,14 +162,19 @@ function buildArcView(laws, issues) {
         const c = t && t.chapters.find(c => c.id === STATE.zoomChapter);
         if (!c) return { units: [], groups: [], arcs: [], dots: [], zoomable: false };
 
-        const units = c.sections.map((s, i) => ({
-            i,
-            key: s.id,
-            label: s.id.split(":").slice(-1)[0],
-            sublabel: s.heading,
-            tooltip: `${s.id} ${s.heading}`,
-            link: s.url,
-        }));
+        const units = c.sections.map((s, i) => {
+            const repealed = isRepealedHeading(s.heading);
+            const numericLabel = s.id.split(":").slice(-1)[0];
+            return {
+                i,
+                key: s.id,
+                label: (repealed ? "✕ " : "") + numericLabel,
+                sublabel: s.heading,
+                tooltip: `${s.id} ${s.heading}`,
+                link: s.url,
+                repealed,
+            };
+        });
         const keyIdx = new Map(units.map(u => [u.key, u.i]));
 
         const { arcs, dots } = arcsDotsFrom(issues, iss => {
@@ -562,7 +583,9 @@ function renderArcChart(laws, issues) {
         .data(view.units)
         .enter()
         .append("g")
-        .attr("class", "arc-tick-group" + (view.zoomable ? " zoomable" : ""))
+        .attr("class", d => "arc-tick-group"
+            + (view.zoomable ? " zoomable" : "")
+            + (d.repealed ? " repealed" : ""))
         .attr("data-unit", d => d.key)
         .attr("transform", d => `translate(${x(d.i)}, 0)`)
         .on("click", (event, d) => {
@@ -601,7 +624,9 @@ function renderArcChart(laws, issues) {
         .data(view.units)
         .enter()
         .append("g")
-        .attr("class", "chapter-label-group" + (view.zoomable ? " zoomable" : "") + " link-label")
+        .attr("class", d => "chapter-label-group link-label"
+            + (view.zoomable ? " zoomable" : "")
+            + (d.repealed ? " repealed" : ""))
         .attr("data-unit", d => d.key)
         .attr("transform", d => `translate(${x(d.i)}, 14) rotate(${labelRotation})`)
         .on("click", (event, d) => {

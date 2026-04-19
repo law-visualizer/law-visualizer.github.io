@@ -521,6 +521,23 @@ footer a { color: var(--accent); }
 
 .arc-tick.zoomable { cursor: pointer; }
 .arc-tick-group.zoomable { cursor: pointer; }
+
+/* Repealed sections / chapters: dim the tick + label so they read
+   as inactive without disappearing. Hover still pops them back to
+   full opacity for accessibility. */
+.arc-tick-group.repealed,
+.chapter-label-group.repealed {
+    opacity: 0.4;
+}
+.arc-tick-group.repealed:hover,
+.arc-tick-group.repealed.hovered,
+.chapter-label-group.repealed:hover,
+.chapter-label-group.repealed.hovered {
+    opacity: 1;
+}
+.chapter-label-group.repealed .chapter-label {
+    fill: var(--muted);
+}
 .arc-tick-hit {
     fill: transparent;
     transition: fill 100ms;
