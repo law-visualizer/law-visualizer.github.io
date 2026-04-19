@@ -329,6 +329,78 @@
       "description": "RSA 21:35 (the statewide statutory-construction time-computation rule) treats deadlines that fall on a 'Saturday, Sunday, or legal holiday' as deemed timely if filed on the next business day. Several proclamation statutes (e.g. RSA 4:13-h Gold Star Mother's Day, RSA 4:13-m Firefighters Memorial Day, RSA 4:13-r Blue Star Mother's Day) call out specific Sundays as named observances. None of these reference each other or use a uniform format; reading them together gives no clean answer to whether a deadline that lands on, say, the 'last Sunday in September' (proclaimed as Gold Star Mother's Day) is a holiday under RSA 21:35.",
       "quote": "If the specified date falls on a Saturday, Sunday, or legal holiday, the document or fee shall be deemed timely filed if it is received by the next business day.",
       "refs": ["4:13-h", "4:13-m", "4:13-r", "21:35"]
+    },
+    {
+      "id": "i050",
+      "title": "'Parent' defined seven different ways across the education code",
+      "category": "contradiction",
+      "description": "Title XV (Education) defines 'parent' independently in at least seven chapters. The special-education chapter (RSA 189-B:2) calls a parent 'a person who has legal custody of a minor child as a natural or adoptive parent or a legal guardian'. Manifest-of-Educational-Choice (RSA 193-A:1) drops the 'natural or adoptive' phrasing entirely. The charter-school chapters (RSA 194-B:1, 194-D:1, 194-F:1) keep adding 'or other person or entity having legal custody' (and in 194-F, 'biological or adoptive'). The college-tuition-payments chapter (RSA 195-E:2) defines parent as 'mother, father or adoptive parent'. The childcare-licensing chapter (RSA 291-A:2) uses 'a parent whose parental rights have not been terminated'. Whether a custodial grandparent or stepparent is a 'parent' depends entirely on which chapter applies.",
+      "quote": "RSA 195-E:2: 'mother, father or adoptive parent' | RSA 194-F:1: 'a biological or adoptive parent, legal guardian, custodian, or other person with legal authority' | RSA 291-A:2: 'a parent whose parental rights have not been terminated'.",
+      "refs": ["189-B:2", "193-A:1", "194-B:1", "194-D:1", "194-F:1", "195-E:2", "291-A:2"]
+    },
+    {
+      "id": "i051",
+      "title": "'Branch office' defined six different ways across financial-services chapters",
+      "category": "contradiction",
+      "description": "Six adjacent regulatory chapters about consumer finance, banking, mortgages, and small loans each define 'branch office' on their own terms. The retail-installment chapter (RSA 361-A:1) and the small-loan chapter (RSA 399-A:1) both say 'a business location within this state of a person required to be licensed under this chapter' — but with subtly different licensing predicates. The depository-bank chapter (RSA 383-B:2-201) shifts to 'any place of business or mobile facility'. The credit-union chapter (RSA 383-E:2-201) requires the location to receive 'the moneys' for membership. The mortgage-banker chapter (RSA 397-A:1) drops the 'within this state' restriction. As a result, an out-of-state mobile lending facility may be a 'branch office' for one regulator but not another.",
+      "quote": "RSA 383-B:2-201: 'any place of business or mobile facility of a depository bank, other than its principal office' | RSA 397-A:1: 'a location within or without this state of a person required to be licensed under this chapter'.",
+      "refs": ["361-A:1", "383-B:2-201", "383-E:2-201", "397-A:1", "399-A:1", "399-D:1"]
+    },
+    {
+      "id": "i052",
+      "title": "'Bank' means a state authority in some chapters and any deposit-taking institution in others",
+      "category": "contradiction",
+      "description": "Two chapters use 'bank' to refer specifically to the New Hampshire municipal bond bank (RSA 195-F:3 and RSA 374-C:2). RSA 383-A:2-201, the central banking definitions section, defines 'bank' more broadly as 'a state bank, national bank, federal savings bank, or foreign state bank'. RSA 384-F:2 incorporates the federal Bank Holding Company Act definition. RSA 421-B:1-102 (the securities chapter) lists banking institutions including those organised under federal law. A reader who hits the word 'bank' in cross-referenced text has no way to know which sense applies without checking every chapter's local definitions.",
+      "quote": "RSA 195-F:3: '\"Bank\" means the New Hampshire municipal bond bank...' | RSA 383-A:2-201: '\"Bank\" means a state bank, national bank, federal savings bank, or foreign state bank.'",
+      "refs": ["195-F:3", "374-C:2", "383-A:2-201", "384-F:2", "421-B:1-102"]
+    },
+    {
+      "id": "i053",
+      "title": "'Airport' defined four different ways across alcohol and aeronautics statutes",
+      "category": "contradiction",
+      "description": "RSA 175:1 (alcohol licensing) defines 'airport' as 'any type of landing area open to the public, which has facilities including but not limited to...'. RSA 422:3 (aeronautics general) defines it as 'an area of land or water that is used or intended to be used for the landing and taking off of aircraft'. RSA 422-B:2 (state-airport district commission) adds 'except a restricted landing area, which is designed for the landing and taking off of aircraft'. RSA 424:1 (airport licensing) requires the area to be 'approved by the commissioner'. A privately owned grass strip approved by the commissioner could qualify as an airport for one chapter and not another, with material consequences for whether liquor sales or aircraft operations are permitted there.",
+      "quote": "RSA 175:1: 'any type of landing area open to the public, which has facilities including but not limited to...' | RSA 424:1: 'any area of land or water, whether constructed or not, which has been approved by the commissioner'.",
+      "refs": ["175:1", "422:3", "422-B:2", "424:1"]
+    },
+    {
+      "id": "i054",
+      "title": "'Association' in the insurance code refers to five different statutory entities",
+      "category": "contradiction",
+      "description": "The single word 'Association' (capitalised, defined in chapter-local definitions) refers to a different specific statutory entity in nearly every insurance chapter that uses it: the New Hampshire Insurance Guaranty Association in RSA 402-C:3 and RSA 404-B:5; the New Hampshire Life and Health Insurance Guaranty Association in RSA 404-D:5, RSA 408-B:4, RSA 408-F:4; the New Hampshire Individual Health Plan Benefit Association in RSA 404-G:2; and a separate Insurance Guaranty Association in RSA 404-H:5. Cross-references between these chapters that use the bare word 'Association' (rather than the full statutory name) are therefore essentially impossible to read without checking the chapter's local definitions section.",
+      "quote": "RSA 402-C:3: '\"Association\" means either the New Hampshire insurance guaranty association created under RSA 404-B:6 or the [New Hampshire life and health insurance guaranty association]...'",
+      "refs": ["402-C:3", "404-B:5", "404-D:5", "404-G:2", "404-H:5", "408-B:4", "408-F:4"]
+    },
+    {
+      "id": "i055",
+      "title": "'Public interest' invoked as a substantive standard 80+ times across uncovered titles, never anchored",
+      "category": "ambiguity",
+      "description": "The phrase 'in the public interest' appears in roughly 83 sections across the uncovered titles as the test for taking various government actions: declaring it 'in the public interest' to preserve open space (RSA 672:1, planning and zoning), to engage in historic preservation (RSA 227-C:1-a), to establish a matching grants program (RSA 227-C:27). The phrase carries enormous decision-making weight but is nowhere defined in the code. Each agency or court applies its own multi-factor balancing test, with no statutory anchor.",
+      "quote": "It is hereby declared to be public policy and in the public interest of this state to engage in a comprehensive program of historic preservation to promote the educational, cultural, economic, and general welfare of the public...",
+      "refs": ["227-C:1-a", "227-C:27", "672:1"]
+    },
+    {
+      "id": "i056",
+      "title": "'Generally accepted accounting principles' invoked as a standard without specifying which version",
+      "category": "ambiguity",
+      "description": "Roughly 42 sections require accounting or auditing 'in accordance with generally accepted accounting principles' (or 'generally accepted standards') without naming a specific framework, a standard-setter (FASB? GASB? IFRS?), or an effective date. Examples: state-store reporting (RSA 177:2), charter-school fiscal-management standards (RSA 194-B:16), the housing-finance-authority audit (RSA 204-C:46), and retail-installment-license financial statements (RSA 361-A:4). Because GAAP itself has revisions, the same statutory language can require different content depending on which year a regulator chooses.",
+      "quote": "...the school fails to meet generally accepted standards for fiscal management.",
+      "refs": ["177:2", "194-B:16", "204-C:46", "361-A:4"]
+    },
+    {
+      "id": "i057",
+      "title": "'Actuarially sound' / 'actuarially equivalent' used without methodology",
+      "category": "ambiguity",
+      "description": "RSA 415-E:11 (multiple-employer welfare arrangements) requires the commissioner to determine that the arrangement is 'actuarially sound', RSA 420-G:12 requires that a health carrier's rating methods are 'actuarially sound', and RSA 420-G:4-d requires the state's essential health benefits to be 'at least actuarially equivalent to the essential health benefits previously established by the federal government'. None of the chapters specifies which actuarial methodology controls, what assumptions are mandatory, or how the equivalence is measured. The standard is therefore opaque to anyone outside the actuarial profession and effectively delegates the substantive rule-making to whoever the commissioner consults.",
+      "quote": "...the commissioner that the arrangement is actuarially sound. Such information and evidence shall be furnished to the commissioner by the arrangement...",
+      "refs": ["409:2", "415-E:11", "420-G:4-d", "420-G:12"]
+    },
+    {
+      "id": "i058",
+      "title": "Election-crime statute lets the prosecutor pick between class A and class B felony",
+      "category": "contradiction",
+      "description": "RSA 659:41 makes any person who 'shall assault any officer at any election' guilty of either 'a class A felony or a class B felony, but never less than a class B felony' — without specifying any criterion that determines which level applies. The same conduct is therefore charged differently depending entirely on prosecutorial choice, which collides with both the lenity principle (defendants should be on notice of penalty) and the equal-treatment principle (similarly situated defendants should face similar penalties).",
+      "quote": "...shall be guilty of a class A felony or a class B felony, but never less than a class B felony, other provisions of the law to the contrary notwithstanding.",
+      "refs": ["659:41"]
     }
   ]
 }
