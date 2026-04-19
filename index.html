@@ -15,10 +15,9 @@
 
     <nav class="category-nav">
         <a href="#overview">Overview</a>
-        <a href="#search">Search</a>
         <a href="#connections">Connections</a>
-        <a href="#references">References</a>
         <a href="#by-title">By Title</a>
+        <a href="#references">References</a>
         <a href="#issues">Issues</a>
         <a href="#about">About</a>
     </nav>
@@ -93,6 +92,12 @@
             </div>
         </section>
 
+        <section id="by-title">
+            <h2>Issues by Title</h2>
+            <p>Total flagged issue references within each scraped title. Click a bar to zoom the connection chart into that title.</p>
+            <div id="title-chart"></div>
+        </section>
+
         <section id="references">
             <h2>References</h2>
             <p>Pick an RSA. The tree on the right shows what that RSA cites (outbound). The list on the left shows every other RSA that cites it (inbound). Click any branch to expand or collapse; click a leaf to make it the new root.</p>
@@ -109,12 +114,6 @@
                     <div id="ref-tree" class="ref-tree"></div>
                 </div>
             </div>
-        </section>
-
-        <section id="by-title">
-            <h2>Issues by Title</h2>
-            <p>Total flagged issue references within each scraped title. Click a bar to zoom the connection chart into that title.</p>
-            <div id="title-chart"></div>
         </section>
 
         <section id="issues">
