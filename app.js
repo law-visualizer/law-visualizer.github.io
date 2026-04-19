@@ -121,7 +121,7 @@ function buildArcView(laws, issues) {
             return {
                 i,
                 key: `${t.id}/${c.id}`,
-                label: (repealed ? "✕ " : "") + c.id,
+                label: c.id,
                 sublabel: c.name,
                 tooltip: `${t.id} Chapter ${c.id}${c.name ? ": " + c.name : ""}${repealed ? " (repealed)" : ""}\n${c.sections.length} sections`,
                 zoomTarget: { level: "chapter", title: t.id, chapter: c.id },
@@ -164,11 +164,10 @@ function buildArcView(laws, issues) {
 
         const units = c.sections.map((s, i) => {
             const repealed = isRepealedHeading(s.heading);
-            const numericLabel = s.id.split(":").slice(-1)[0];
             return {
                 i,
                 key: s.id,
-                label: (repealed ? "✕ " : "") + numericLabel,
+                label: s.id.split(":").slice(-1)[0],
                 sublabel: s.heading,
                 tooltip: `${s.id} ${s.heading}`,
                 link: s.url,
