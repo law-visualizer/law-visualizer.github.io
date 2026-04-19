@@ -581,6 +581,9 @@ function buildRefHierarchy(rootId, maxDepth = 3) {
 
 function renderRefTree(rootId) {
     const root = buildRefHierarchy(rootId);
+    const outCount = (RSA_LINKS.outbound[rootId] || []).length;
+    const heading = document.getElementById("ref-tree-heading");
+    if (heading) heading.textContent = `Cites (${outCount})`;
     const container = d3.select("#ref-tree");
     container.selectAll("*").remove();
 

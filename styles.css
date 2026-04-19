@@ -85,7 +85,7 @@ main {
     font-size: 0.9em;
 }
 
-#rsa-search {
+.search-bar input[type="text"] {
     width: 100%;
     padding: 0.6rem 0.9rem;
     border: 1px solid var(--border);
@@ -95,7 +95,7 @@ main {
     background: #fff;
 }
 
-#rsa-search:focus {
+.search-bar input[type="text"]:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 2px rgba(139, 29, 58, 0.18);
