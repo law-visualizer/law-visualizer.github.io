@@ -786,14 +786,28 @@ function renderArcChart(laws, issues) {
     const containerWidth = container.node().clientWidth || 1000;
     const margin = { top: 170, right: 20, bottom: 60, left: 20 };
     const innerWidth = Math.max(600, containerWidth - margin.left - margin.right);
-    const tickGap = view.units.length <= 1 ? innerWidth / 2 : innerWidth / (view.units.length - 1);
+
+    // With 5+ units we spread them across innerWidth. With ≤4 we keep a
+    // moderate tickGap and center the group so four labels don't sit 900px
+    // apart on a near-empty strip.
+    let tickGap, startX;
+    if (view.units.length <= 1) {
+        tickGap = 0;
+        startX = innerWidth / 2;
+    } else if (view.units.length <= 4) {
+        tickGap = Math.min(180, innerWidth / 6);
+        startX = (innerWidth - (view.units.length - 1) * tickGap) / 2;
+    } else {
+        tickGap = innerWidth / (view.units.length - 1);
+        startX = 0;
+    }
+    const x = (i) => startX + i * tickGap;
 
     const height = margin.top + margin.bottom;
     const svg = container.append("svg")
         .attr("width", innerWidth + margin.left + margin.right)
         .attr("height", height);
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    const x = (i) => view.units.length === 1 ? innerWidth / 2 : i * tickGap;
 
     // Helper to sync hover state between tick and label sharing the same unit
     // key, and to preview the unit's full name in the breadcrumb.

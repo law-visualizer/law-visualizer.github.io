@@ -16,6 +16,11 @@
 
 * { box-sizing: border-box; }
 
+/* Suppress the blinking text caret anywhere that isn't actually editable
+   (it shows up when non-input elements receive focus via click/tab). */
+* { caret-color: transparent; }
+input, textarea, [contenteditable] { caret-color: auto; }
+
 body {
     margin: 0;
     background: var(--bg);
@@ -644,8 +649,12 @@ footer a { color: var(--accent); }
     display: flex;
     flex-wrap: nowrap;
     gap: 0.35rem;
-    align-items: baseline;
+    align-items: center;
     font-size: 0.9rem;
+    /* Fixed line-height and min-height (in rem, not em) so the container
+       height stays stable when the font shrinks via .compact classes. */
+    line-height: 1.4rem;
+    min-height: calc(1.4rem + 1rem);
     margin: 0 0 0.75rem;
     padding: 0.5rem 0.75rem;
     background: var(--panel);
