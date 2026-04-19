@@ -3,12 +3,14 @@
 // data/issues.json, then renders the connections arc chart, the by-title
 // bar chart, an RSA search with full-text drill-in, and the issue list.
 
-const CATEGORY_ORDER = ["contradiction", "ambiguity", "outdated", "discrimination", "other"];
+const CATEGORY_ORDER = ["contradiction", "ambiguity", "outdated", "discrimination", "loophole", "broken-ref", "other"];
 const CATEGORY_LABEL = {
     contradiction: "Contradictions",
     ambiguity: "Ambiguities",
     outdated: "Outdated refs",
     discrimination: "Discriminatory",
+    loophole: "Loopholes",
+    "broken-ref": "Broken refs",
     other: "Other",
 };
 
@@ -17,7 +19,7 @@ let STATE = {
     issues: [],
     activeCategory: "all",
     sectionIdx: null,
-    activeArcCats: new Set(["contradiction", "ambiguity", "outdated", "discrimination"]),
+    activeArcCats: new Set(["contradiction", "ambiguity", "outdated", "discrimination", "loophole", "broken-ref"]),
     pinnedIssue: null,
     zoomLevel: "all",   // "all" | "title" | "chapter"
     zoomTitle: null,    // title id when zoomed in

@@ -10,6 +10,8 @@
     --cat-ambiguity: #d89b2a;
     --cat-outdated: #4c7cb0;
     --cat-discrimination: #6b3e8c;
+    --cat-loophole: #2e8b57;
+    --cat-broken-ref: #8b6914;
     --cat-other: #5a6b5a;
     font-family: Georgia, "Times New Roman", serif;
 }
@@ -433,11 +435,15 @@ section h2 {
 .stat-cat.cat-ambiguity     { border-top-color: var(--cat-ambiguity); }
 .stat-cat.cat-outdated      { border-top-color: var(--cat-outdated); }
 .stat-cat.cat-discrimination { border-top-color: var(--cat-discrimination); }
+.stat-cat.cat-loophole      { border-top-color: var(--cat-loophole); }
+.stat-cat.cat-broken-ref    { border-top-color: var(--cat-broken-ref); }
 
 .stat-cat.cat-contradiction .stat-value { color: var(--cat-contradiction); }
 .stat-cat.cat-ambiguity .stat-value     { color: var(--cat-ambiguity); }
 .stat-cat.cat-outdated .stat-value      { color: var(--cat-outdated); }
 .stat-cat.cat-discrimination .stat-value { color: var(--cat-discrimination); }
+.stat-cat.cat-loophole .stat-value      { color: var(--cat-loophole); }
+.stat-cat.cat-broken-ref .stat-value    { color: var(--cat-broken-ref); }
 
 .stat-sub { padding: 0.6rem; }
 .stat-sub .stat-value { font-size: 1.25rem; color: var(--fg); }
@@ -500,6 +506,8 @@ section h2 {
 .issue-card.cat-ambiguity     { border-left-color: var(--cat-ambiguity); }
 .issue-card.cat-outdated      { border-left-color: var(--cat-outdated); }
 .issue-card.cat-discrimination { border-left-color: var(--cat-discrimination); }
+.issue-card.cat-loophole      { border-left-color: var(--cat-loophole); }
+.issue-card.cat-broken-ref    { border-left-color: var(--cat-broken-ref); }
 
 .issue-header {
     display: flex;
@@ -524,6 +532,8 @@ section h2 {
 .issue-cat.cat-ambiguity     { background: var(--cat-ambiguity); color: white; }
 .issue-cat.cat-outdated      { background: var(--cat-outdated); color: white; }
 .issue-cat.cat-discrimination { background: var(--cat-discrimination); color: white; }
+.issue-cat.cat-loophole      { background: var(--cat-loophole); color: white; }
+.issue-cat.cat-broken-ref    { background: var(--cat-broken-ref); color: white; }
 
 .issue-quote {
     font-style: italic;
@@ -610,6 +620,8 @@ footer a { color: var(--accent); }
 .arc-pill.cat-ambiguity     { --pill-color: var(--cat-ambiguity); }
 .arc-pill.cat-outdated      { --pill-color: var(--cat-outdated); }
 .arc-pill.cat-discrimination { --pill-color: var(--cat-discrimination); }
+.arc-pill.cat-loophole      { --pill-color: var(--cat-loophole); }
+.arc-pill.cat-broken-ref    { --pill-color: var(--cat-broken-ref); }
 
 .arc-pill:has(input:checked) {
     background: var(--pill-color);
@@ -791,6 +803,8 @@ footer a { color: var(--accent); }
 .issue-arc.cat-ambiguity     { stroke: var(--cat-ambiguity); }
 .issue-arc.cat-outdated      { stroke: var(--cat-outdated); }
 .issue-arc.cat-discrimination { stroke: var(--cat-discrimination); }
+.issue-arc.cat-loophole      { stroke: var(--cat-loophole); }
+.issue-arc.cat-broken-ref    { stroke: var(--cat-broken-ref); }
 
 .issue-dot {
     cursor: pointer;
@@ -806,6 +820,8 @@ footer a { color: var(--accent); }
 .issue-dot.cat-ambiguity     { fill: var(--cat-ambiguity); }
 .issue-dot.cat-outdated      { fill: var(--cat-outdated); }
 .issue-dot.cat-discrimination { fill: var(--cat-discrimination); }
+.issue-dot.cat-loophole      { fill: var(--cat-loophole); }
+.issue-dot.cat-broken-ref    { fill: var(--cat-broken-ref); }
 
 @media (max-width: 600px) {
     header h1 { font-size: 1.8rem; }

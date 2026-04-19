@@ -5,7 +5,9 @@
       "contradiction": "Internal conflicts or drafting inconsistencies between sections.",
       "ambiguity": "Vague or undefined terms that leave application unclear.",
       "outdated": "References, dates, or framings that have not been modernized.",
-      "discrimination": "Discriminatory framings embedded in statutory language."
+      "discrimination": "Discriminatory framings embedded in statutory language.",
+      "loophole": "Exceptions, reductions, or immunities that materially narrow a rule in ways worth examining.",
+      "broken-ref": "Sections that cite an RSA that has been repealed (the target is now dead law)."
     },
     "notes": "Quotes are taken verbatim from the scraped HTML. Each `refs` entry points to the canonical section id in laws.json. Links to the official NH General Court site accompany each issue in the UI."
   },
@@ -609,6 +611,86 @@
       "description": "The term 'cohabit' (or 'cohabitating') appears in at least four substantively different contexts with no shared definition. RSA 102:16 awards retirement benefits in priority order to 'legal wife cohabiting with member retiring'. RSA 167:79 (employment program for public-assistance recipients) refers to 'cohabitating adults who share a minor child'. RSA 168-B:2 (parent-child relationship) measures cohabitation 'within 300 days after the termination of cohabitation'. RSA 173-B:1 (domestic violence) defines a covered relationship as 'persons cohabiting with each other, and persons who cohabited with each other but who no longer share the same residence'. None of these uses cross-reference each other, so the threshold of 'cohabitation' (overnight stays? shared utilities? shared household?) shifts by chapter.",
       "quote": "RSA 173-B:1: '\"Family or household members\" means: ... persons cohabiting with each other, and persons who cohabited with each other but who no longer share the same residence...'",
       "refs": ["102:16", "167:79", "168-B:2", "173-B:1"]
+    },
+    {
+      "id": "i085",
+      "title": "Simple assault reduces to a violation when the fight is 'mutual consent'",
+      "category": "loophole",
+      "description": "RSA 631:2-a classifies simple assault as a misdemeanor — except 'unless committed in a fight entered into by mutual consent, in which case it is a violation.' A violation is non-criminal and generally carries no jail time. The exception has no statutory limit on the resulting injury, so even a fight that causes bodily injury can be charged as a violation if both parties are deemed to have consented. There is no definition of what suffices to show 'mutual consent', leaving the distinction to prosecutorial discretion.",
+      "quote": "Simple assault is a misdemeanor unless committed in a fight entered into by mutual consent, in which case it is a violation.",
+      "refs": ["631:2-a"]
+    },
+    {
+      "id": "i086",
+      "title": "Charitable-trust oversight exempts religious organisations and their 'auxiliaries'",
+      "category": "loophole",
+      "description": "RSA 7:19, the chapter that gives the attorney general supervisory authority over every charitable trust and solicitation in NH, contains a broad carve-out: the subdivision 'does not apply to the United States; any state, territory or possession of the United States... or to any religious organization which holds property for charitable or religious purposes or their integrated auxiliaries or to conventions or associations of churches.' Religious organisations thus operate outside the AG's charitable-oversight regime, even when their activity overlaps with secular charitable work, and the scope of 'integrated auxiliaries' is not defined in the chapter.",
+      "quote": "However, this subdivision does not apply to the United States; any state, territory or possession of the United States... or to any religious organization which holds property for charitable or religious purposes or their integrated auxiliaries or to conventions or associations of churches.",
+      "refs": ["7:19"]
+    },
+    {
+      "id": "i087",
+      "title": "Insurance-regulator good-faith immunity shields officials unless 'wanton or reckless'",
+      "category": "loophole",
+      "description": "RSA 402-M:11 grants a near-total immunity: 'There shall be no liability on the part of, and no cause of action of any nature shall arise against, the commissioner or the department or their employees, agents, consultants, or counsel for any action taken by them that is within the scope of their powers and duties under this chapter and that is performed in good faith and not in a wanton or reckless manner.' The only carve-back is 'wanton or reckless', a threshold materially higher than negligence, so errors that harm a regulated party short of recklessness are effectively unremediable.",
+      "quote": "There shall be no liability on the part of, and no cause of action of any nature shall arise against, the commissioner or the department or their employees... for any action taken by them that is within the scope of their powers and duties under this chapter and that is performed in good faith and not in a wanton or reckless manner.",
+      "refs": ["402-M:11"]
+    },
+    {
+      "id": "i088",
+      "title": "YDC settlement fund caps state liability for sexual and other abuse claims",
+      "category": "loophole",
+      "description": "RSA 21-M:11-a caps payouts from the Youth Development Center settlement fund at $1.5M per claimant for 'sexual and other abuse' (combined), $2.5M for 'egregious sexual abuse', $250K for 'other abuse only', and $300/day (up to $100K) for isolated-confinement incidents. These caps are written as fixed dollar amounts with no inflation adjustment, no hardship exception, and no mechanism to exceed them; claimants who accept the fund waive all other legal remedies against the state. The result is a statutory ceiling on the state's financial exposure for abuse it caused, stacked below what an individual jury could otherwise award.",
+      "quote": "For all claims involving both sexual and other abuse or sexual abuse only, no individual claimant shall be paid more than $1,500,000 in settlement of all claims in the aggregate. For all claims involving egregious sexual abuse, no individual claimant shall be paid more than $2,500,000 in settlement of all claims...",
+      "refs": ["21-M:11-a"]
+    },
+    {
+      "id": "i089",
+      "title": "Juvenile Immaturity provision disapplies Juvenile-Court SOL for 13-to-15-year-old cases",
+      "category": "loophole",
+      "description": "RSA 628:1 (Immaturity) creates a pathway for prosecuting a person for conduct committed when they were 13-14 in adult court. When a juvenile petition was never filed and the 'statute of limitations has not expired', the section says 'the provisions of RSA 169-B:24 shall not apply' — disapplying the juvenile-court's exclusive jurisdiction. The trigger ('no juvenile petition has been filed') lies partly in the hands of the state, so the state can defer filing a juvenile petition until after the juvenile exclusive-jurisdiction deadline, then invoke 628:1 to route the case to superior court.",
+      "quote": "...when such person was 13 years of age but less than 15 years of age, and the statute of limitations has not expired, and no juvenile petition based on the acts constituting the offense has been filed, the provisions of RSA 169-B:24 shall not apply.",
+      "refs": ["628:1"]
+    },
+    {
+      "id": "i090",
+      "title": "83 sections still cite RSA 94:1 — repealed in 1975",
+      "category": "broken-ref",
+      "description": "RSA 94:1, the salaries-of-state-employees schedule, was repealed by 1975, 505:27, eff. July 1, 1975 — almost 50 years ago — yet 83 currently-active sections still cite it as live authority. Examples: RSA 4:12-cc, 4:42, 4-B:3, 5:2, 5:3, 5:18. Every one of those citations points the reader to a dead statute with no replacement reference, meaning the ordinary citizen who traces the cross-reference lands on a 'Repealed by' stub.",
+      "quote": "(Targeted section, RSA 94:1 heading: 'Repealed by 1975, 505:27, eff. July 1, 1975'.)",
+      "refs": ["4:12-cc", "4:42", "4-B:3", "5:2", "5:3", "5:18"]
+    },
+    {
+      "id": "i091",
+      "title": "Eight sections cite RSA 318:29 — repealed in 2023",
+      "category": "broken-ref",
+      "description": "RSA 318:29 was repealed by 2023, 79:318, VIII, eff. Sept. 1, 2023, but eight still-active sections continue to reference it — including RSA 126-A:93, RSA 310:5, and multiple subsections of the surrounding 318 chapter (RSA 318:29-a, 318:51-a, 318:51-b, 318:51-c). Any reader following the citation arrives at a 'Repealed by' stub. The repeal was recent enough that it suggests a clean-up pass on dependent cross-references was not performed when the rewrite landed.",
+      "quote": "(Targeted section, RSA 318:29 heading: 'Repealed by 2023, 79:318, VIII, eff. Sept. 1, 2023'.)",
+      "refs": ["126-A:93", "310:5", "318:29-a", "318:51-a", "318:51-b", "318:51-c"]
+    },
+    {
+      "id": "i092",
+      "title": "Motor-vehicle-equipment chapter 266 repeals cascade with seven active citers",
+      "category": "broken-ref",
+      "description": "The core motor-vehicle-equipment section RSA 266:1 and several sibling sections (266:2, 266:5 and more) were repealed by 2025, 141:253 (eff. Jan. 31, 2026). Seven active sections still cite RSA 266:1 — RSA 21-P:14, RSA 261:41-a, RSA 261:89-b, RSA 261:89-d, RSA 261:111, RSA 261:121 — leaving the reader unsure which successor rule now applies. Because the repeal is recent, any dependent regulatory scheme built on 266:1 is likely mis-aligned until the citers are updated.",
+      "quote": "(Targeted section, RSA 266:1 heading: 'Repealed by 2025, 141:253, IV, eff. Jan. 31, 2026'.)",
+      "refs": ["21-P:14", "261:41-a", "261:89-b", "261:89-d", "261:111", "261:121"]
+    },
+    {
+      "id": "i093",
+      "title": "Two accounting-license sections still cite the repealed RSA 309-B:6",
+      "category": "broken-ref",
+      "description": "RSA 309-B:6 was repealed by 2024, 327:159, eff. July 1, 2024. Nonetheless RSA 309-B:8 and RSA 309-B:14 — both part of the same accounting-licensure chapter that carried out the repeal — still reference 309-B:6 internally. Readers auditing accounting-license requirements using those sections land on a 'Repealed by' stub.",
+      "quote": "(Targeted section, RSA 309-B:6 heading: 'Repealed by 2024, 327:159, eff. July 1, 2024'.)",
+      "refs": ["309-B:8", "309-B:14"]
+    },
+    {
+      "id": "i094",
+      "title": "Retirement-system chapter 100-C still cites two long-repealed court-structure sections",
+      "category": "broken-ref",
+      "description": "RSA 490:2 and RSA 491:2 were both repealed by 2003, 311:10 (July 1, 2003) as part of NH's court restructuring. Over twenty years later, RSA 100-C:4 and RSA 100-C:18 — judicial-retirement-system provisions — still cite RSA 490:2. Similarly, a handful of motor-vehicle sections cite the repealed RSA 20:2. The pattern is that retirement-system and structural-court statutes routinely outlive the procedural sections they were tied to, leaving citations pointing at 'Repealed by' stubs.",
+      "quote": "(Targeted section, RSA 490:2 heading: 'Repealed by 2003, 311:10, I, eff. July 1, 2003'.)",
+      "refs": ["100-C:4", "100-C:18", "20:16", "20:18", "20:19"]
     }
   ]
 }
