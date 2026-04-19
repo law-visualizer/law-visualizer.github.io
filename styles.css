@@ -210,41 +210,95 @@ main {
 
 /* References tab */
 .ref-detail { margin-top: 1rem; }
+
+.ref-selected {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 3px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+.ref-selected .ref-selected-id {
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+.ref-selected .ref-selected-link {
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
 .ref-tree-wrap {
     display: grid;
-    grid-template-columns: minmax(200px, 280px) 1fr;
+    grid-template-columns: minmax(220px, 320px) 1fr;
     gap: 1rem;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 0.75rem;
 }
-.ref-inbound {
+.ref-pane { min-width: 0; }
+.ref-pane.ref-inbound {
     border-right: 1px solid var(--border);
     padding-right: 0.75rem;
-    max-height: 600px;
-    overflow-y: auto;
+}
+.ref-pane-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 .ref-side-heading {
-    margin: 0 0 0.5rem;
+    margin: 0;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--muted);
 }
-.ref-inbound-list {
+.ref-view-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--bg);
+}
+.ref-view-toggle button {
+    border: none;
+    background: transparent;
+    padding: 0.18rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+    color: var(--muted);
+}
+.ref-view-toggle button.active {
+    background: var(--accent);
+    color: #fff;
+}
+.ref-view-toggle button:not(.active):hover { color: var(--accent); }
+
+.ref-pane-body {
+    max-height: 600px;
+    overflow: auto;
+}
+.ref-list {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     font-size: 0.9rem;
 }
-.ref-inbound-list a {
+.ref-list a {
     color: var(--accent);
     text-decoration: none;
     cursor: pointer;
 }
-.ref-inbound-list a:hover { text-decoration: underline; }
-.ref-inbound-empty {
+.ref-list a:hover { text-decoration: underline; }
+.ref-empty {
     color: var(--muted);
     font-style: italic;
     font-size: 0.9rem;
@@ -252,7 +306,6 @@ main {
 
 .ref-tree {
     overflow: auto;
-    max-height: 600px;
 }
 .ref-tree svg { display: block; }
 .ref-tree .node circle {

@@ -472,7 +472,8 @@ let RSA_LINKS = null;            // {outbound: {id: [ids]}, inbound: {id: [ids]}
 let RSA_LINKS_LOADING = null;
 let REF_ACTIVE_SUGGEST = -1;
 let REF_ROOT_ID = null;
-let REF_COLLAPSED = new Set();   // node-paths that are currently collapsed
+let REF_COLLAPSED = { outbound: new Set(), inbound: new Set() };
+let REF_VIEW = { outbound: "tree", inbound: "list" };
 
 async function ensureLinks() {
     if (RSA_LINKS) return RSA_LINKS;
@@ -494,7 +495,13 @@ function bindRefSearch() {
 
     const update = () => {
         const q = input.value.trim();
-        if (!q) { REF_ACTIVE_SUGGEST = -1; ul.hidden = true; return; }
+        if (!q) {
+            REF_ACTIVE_SUGGEST = -1;
+            ul.hidden = true;
+            REF_ROOT_ID = null;
+            document.getElementById("ref-detail").hidden = true;
+            return;
+        }
         const entries = searchRSAs(q, 20);
         REF_ACTIVE_SUGGEST = entries.length ? 0 : -1;
         ul.innerHTML = "";
@@ -511,6 +518,18 @@ function bindRefSearch() {
     input.addEventListener("input", update);
     input.addEventListener("focus", () => { if (input.value.trim()) update(); });
     input.addEventListener("blur", () => setTimeout(() => { ul.hidden = true; }, 120));
+
+    // Toggle buttons (event delegation so handlers survive re-renders)
+    document.querySelectorAll(".ref-view-toggle").forEach(toggle => {
+        const direction = toggle.dataset.direction;
+        toggle.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                REF_VIEW[direction] = btn.dataset.view;
+                toggle.querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
+                if (REF_ROOT_ID) renderRefDirection(REF_ROOT_ID, direction);
+            });
+        });
+    });
     input.addEventListener("keydown", (ev) => {
         if (ul.hidden) return;
         const items = ul.querySelectorAll(".suggestion");
@@ -525,80 +544,121 @@ async function pickRefRoot(id) {
     document.getElementById("ref-search").value = id;
     document.getElementById("ref-suggestions").hidden = true;
     REF_ROOT_ID = id;
-    REF_COLLAPSED = new Set();
+    REF_COLLAPSED = { outbound: new Set(), inbound: new Set() };
     await ensureLinks();
     document.getElementById("ref-detail").hidden = false;
-    renderRefInbound(id);
-    renderRefTree(id);
+    renderRefSelected(id);
+    renderRefDirection(id, "outbound");
+    renderRefDirection(id, "inbound");
 }
 
-function renderRefInbound(id) {
-    const wrap = document.querySelector(".ref-inbound-list");
+function renderRefSelected(id) {
+    const meta = refSectionMeta(id);
+    const wrap = document.getElementById("ref-selected");
     wrap.innerHTML = "";
-    const ins = (RSA_LINKS.inbound[id] || []);
-    document.querySelector(".ref-side-heading").textContent = `Cited by (${ins.length})`;
-    if (!ins.length) {
-        const p = document.createElement("p");
-        p.className = "ref-inbound-empty";
-        p.textContent = "No other RSA cites this one.";
-        wrap.appendChild(p);
-        return;
+    const idSpan = document.createElement("span");
+    idSpan.className = "ref-selected-id";
+    idSpan.textContent = `RSA ${id}`;
+    wrap.appendChild(idSpan);
+    if (meta.heading) {
+        const h = document.createElement("span");
+        h.textContent = meta.heading;
+        wrap.appendChild(h);
     }
-    for (const refId of ins) {
-        const meta = refSectionMeta(refId);
+    if (meta.url) {
         const a = document.createElement("a");
-        a.textContent = `${refId}${meta.heading ? " — " + meta.heading : ""}`;
-        a.title = meta.heading || refId;
-        a.onclick = () => pickRefRoot(refId);
+        a.className = "ref-selected-link";
+        a.href = meta.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = "View on gc.nh.gov ↗";
         wrap.appendChild(a);
     }
 }
 
-// Build a hierarchy lazily — each node has metadata, an outbound child count,
-// and a `collapsed` flag derived from REF_COLLAPSED.
-function buildRefHierarchy(rootId, maxDepth = 3) {
+function renderRefDirection(rootId, direction) {
+    const adjacency = RSA_LINKS[direction] || {};
+    const directs = adjacency[rootId] || [];
+    const headingEl = document.getElementById(`ref-${direction === "outbound" ? "outbound" : "inbound"}-heading`);
+    headingEl.textContent = (direction === "outbound" ? "Cites" : "Cited by") + ` (${directs.length})`;
+
+    const body = document.getElementById(`ref-${direction === "outbound" ? "outbound" : "inbound"}-body`);
+    body.innerHTML = "";
+
+    if (!directs.length) {
+        const p = document.createElement("p");
+        p.className = "ref-empty";
+        p.textContent = direction === "outbound"
+            ? "This RSA does not cite any other RSA."
+            : "No other RSA cites this one.";
+        body.appendChild(p);
+        return;
+    }
+
+    if (REF_VIEW[direction] === "list") {
+        renderRefList(directs, body);
+    } else {
+        renderRefTree(rootId, direction, body);
+    }
+}
+
+function renderRefList(ids, container) {
+    const list = document.createElement("div");
+    list.className = "ref-list";
+    for (const id of ids) {
+        const meta = refSectionMeta(id);
+        const a = document.createElement("a");
+        a.textContent = `${id}${meta.heading ? " — " + meta.heading : ""}`;
+        a.title = meta.heading || id;
+        a.onclick = () => pickRefRoot(id);
+        list.appendChild(a);
+    }
+    container.appendChild(list);
+}
+
+// Walk the link graph in `direction` from rootId to a depth limit, honouring
+// the per-direction collapsed-paths set. Cycles are broken by visited tracking.
+function buildRefHierarchy(rootId, direction, maxDepth = 3) {
+    const adjacency = RSA_LINKS[direction] || {};
+    const collapsed = REF_COLLAPSED[direction];
     const visited = new Set();
     function buildNode(id, path, depth) {
         const meta = refSectionMeta(id);
-        const outs = RSA_LINKS.outbound[id] || [];
+        const neighbours = adjacency[id] || [];
         const node = {
             id,
             path,
             heading: meta.heading,
             url: meta.url,
-            childCount: outs.length,
+            childCount: neighbours.length,
         };
-        const isCollapsed = REF_COLLAPSED.has(path);
-        if (depth >= maxDepth || isCollapsed || visited.has(id) || !outs.length) {
+        if (depth >= maxDepth || collapsed.has(path) || visited.has(id) || !neighbours.length) {
             return node;
         }
         visited.add(id);
-        node.children = outs.map(child => buildNode(child, `${path}/${child}`, depth + 1));
+        node.children = neighbours.map(c => buildNode(c, `${path}/${c}`, depth + 1));
         return node;
     }
     return buildNode(rootId, rootId, 0);
 }
 
-function renderRefTree(rootId) {
-    const root = buildRefHierarchy(rootId);
-    const outCount = (RSA_LINKS.outbound[rootId] || []).length;
-    const heading = document.getElementById("ref-tree-heading");
-    if (heading) heading.textContent = `Cites (${outCount})`;
-    const container = d3.select("#ref-tree");
-    container.selectAll("*").remove();
+function renderRefTree(rootId, direction, container) {
+    const root = buildRefHierarchy(rootId, direction);
+    const sel = d3.select(container);
+    sel.selectAll("*").remove();
 
     const hier = d3.hierarchy(root);
     const nodeCount = hier.descendants().length;
     const nodeHeight = 22;
-    const innerHeight = Math.max(220, nodeCount * nodeHeight);
-    const margin = { top: 12, right: 240, bottom: 12, left: 16 };
-    const width = (container.node().clientWidth || 700) - margin.left - margin.right;
+    const innerHeight = Math.max(180, nodeCount * nodeHeight);
+    const margin = { top: 12, right: 220, bottom: 12, left: 16 };
+    const width = (container.clientWidth || 600) - margin.left - margin.right;
 
-    const treeLayout = d3.tree().size([innerHeight, width]);
+    const treeLayout = d3.tree().size([innerHeight, Math.max(120, width)]);
     treeLayout(hier);
 
-    const svg = container.append("svg")
-        .attr("width", width + margin.left + margin.right)
+    const svg = sel.append("svg")
+        .attr("width", Math.max(120, width) + margin.left + margin.right)
         .attr("height", innerHeight + margin.top + margin.bottom);
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -607,10 +667,9 @@ function renderRefTree(rootId) {
         .enter()
         .append("path")
         .attr("class", "link")
-        .attr("d", d3.linkHorizontal()
-            .x(d => d.y)
-            .y(d => d.x));
+        .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
 
+    const collapsed = REF_COLLAPSED[direction];
     const node = g.selectAll(".node")
         .data(hier.descendants())
         .enter()
@@ -623,26 +682,24 @@ function renderRefTree(rootId) {
     node.append("circle")
         .attr("r", d => d.data.id === rootId ? 6 : (d.data.childCount ? 4 : 3))
         .on("click", (event, d) => {
-            // Toggle collapse on clicks of nodes with children
             if (!d.data.childCount) return;
-            if (REF_COLLAPSED.has(d.data.path)) REF_COLLAPSED.delete(d.data.path);
-            else REF_COLLAPSED.add(d.data.path);
-            renderRefTree(rootId);
+            if (collapsed.has(d.data.path)) collapsed.delete(d.data.path);
+            else collapsed.add(d.data.path);
+            renderRefDirection(rootId, direction);
         })
         .append("title")
-        .text(d => d.data.childCount ? `Click to ${REF_COLLAPSED.has(d.data.path) ? "expand" : "collapse"} (${d.data.childCount} refs)` : "leaf");
+        .text(d => d.data.childCount ? `Click to ${collapsed.has(d.data.path) ? "expand" : "collapse"} (${d.data.childCount} refs)` : "leaf");
 
     node.append("text")
         .attr("dy", "0.32em")
         .attr("x", 8)
         .attr("text-anchor", "start")
         .text(d => {
-            const cnt = d.data.childCount && (!d.children || REF_COLLAPSED.has(d.data.path)) ? ` (${d.data.childCount})` : "";
+            const cnt = d.data.childCount && (!d.children || collapsed.has(d.data.path)) ? ` (${d.data.childCount})` : "";
             const head = d.data.heading ? " — " + d.data.heading : "";
             return `${d.data.id}${head}${cnt}`;
         })
         .on("click", (event, d) => {
-            // Click text → re-root the tree on this node
             if (d.data.id !== rootId) pickRefRoot(d.data.id);
         })
         .append("title")

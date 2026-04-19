@@ -106,14 +106,27 @@
                 <ul id="ref-suggestions" class="suggestions" hidden></ul>
             </div>
             <div id="ref-detail" class="ref-detail" hidden>
+                <div class="ref-selected" id="ref-selected"></div>
                 <div class="ref-tree-wrap">
-                    <aside id="ref-inbound" class="ref-inbound">
-                        <h3 class="ref-side-heading">Cited by</h3>
-                        <div class="ref-inbound-list"></div>
+                    <aside class="ref-pane ref-inbound">
+                        <div class="ref-pane-head">
+                            <h3 class="ref-side-heading" id="ref-inbound-heading">Cited by</h3>
+                            <div class="ref-view-toggle" data-direction="inbound">
+                                <button class="active" data-view="list">List</button>
+                                <button data-view="tree">Tree</button>
+                            </div>
+                        </div>
+                        <div id="ref-inbound-body" class="ref-pane-body"></div>
                     </aside>
-                    <div class="ref-tree-pane">
-                        <h3 class="ref-side-heading" id="ref-tree-heading">Cites</h3>
-                        <div id="ref-tree" class="ref-tree"></div>
+                    <div class="ref-pane ref-outbound">
+                        <div class="ref-pane-head">
+                            <h3 class="ref-side-heading" id="ref-outbound-heading">Cites</h3>
+                            <div class="ref-view-toggle" data-direction="outbound">
+                                <button data-view="list">List</button>
+                                <button class="active" data-view="tree">Tree</button>
+                            </div>
+                        </div>
+                        <div id="ref-outbound-body" class="ref-pane-body"></div>
                     </div>
                 </div>
             </div>
