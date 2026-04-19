@@ -17,6 +17,7 @@
         <a href="#overview">Overview</a>
         <a href="#search">Search</a>
         <a href="#connections">Connections</a>
+        <a href="#references">References</a>
         <a href="#by-title">By Title</a>
         <a href="#issues">Issues</a>
         <a href="#about">About</a>
@@ -89,6 +90,24 @@
             <div id="arc-chart"></div>
             <div id="arc-detail" class="detail-panel">
                 <p class="hint">Hover an arc to preview; click a tick to zoom in.</p>
+            </div>
+        </section>
+
+        <section id="references">
+            <h2>References</h2>
+            <p>Pick an RSA. The tree on the right shows what that RSA cites (outbound). The list on the left shows every other RSA that cites it (inbound). Click any branch to expand or collapse; click a leaf to make it the new root.</p>
+            <div class="search-bar">
+                <input type="text" id="ref-search" placeholder="Find an RSA to centre the tree on&hellip;" autocomplete="off" spellcheck="false">
+                <ul id="ref-suggestions" class="suggestions" hidden></ul>
+            </div>
+            <div id="ref-detail" class="ref-detail" hidden>
+                <div class="ref-tree-wrap">
+                    <aside id="ref-inbound" class="ref-inbound">
+                        <h3 class="ref-side-heading">Cited by</h3>
+                        <div class="ref-inbound-list"></div>
+                    </aside>
+                    <div id="ref-tree" class="ref-tree"></div>
+                </div>
             </div>
         </section>
 

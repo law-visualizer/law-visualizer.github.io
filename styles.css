@@ -208,6 +208,77 @@ main {
     margin: 0.5rem 0;
 }
 
+/* References tab */
+.ref-detail { margin-top: 1rem; }
+.ref-tree-wrap {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 1rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+.ref-inbound {
+    border-right: 1px solid var(--border);
+    padding-right: 0.75rem;
+    max-height: 600px;
+    overflow-y: auto;
+}
+.ref-side-heading {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+}
+.ref-inbound-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.9rem;
+}
+.ref-inbound-list a {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+}
+.ref-inbound-list a:hover { text-decoration: underline; }
+.ref-inbound-empty {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.ref-tree {
+    overflow: auto;
+    max-height: 600px;
+}
+.ref-tree svg { display: block; }
+.ref-tree .node circle {
+    fill: var(--panel);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    cursor: pointer;
+}
+.ref-tree .node.has-children circle { fill: var(--accent); }
+.ref-tree .node.is-root circle {
+    fill: var(--accent);
+    r: 6;
+}
+.ref-tree .node text {
+    font-size: 11px;
+    fill: var(--fg);
+    font-family: inherit;
+    cursor: pointer;
+}
+.ref-tree .node text:hover { fill: var(--accent); text-decoration: underline; }
+.ref-tree .link {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 1.2;
+}
+
 section {
     margin-bottom: 3.5rem;
     scroll-margin-top: 4rem;

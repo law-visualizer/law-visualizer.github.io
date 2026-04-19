@@ -466,6 +466,186 @@ function renderRSADetail(titleObj, chap, sec) {
     }
 }
 
+// ---- References tree -------------------------------------------------------
+
+let RSA_LINKS = null;            // {outbound: {id: [ids]}, inbound: {id: [ids]}}
+let RSA_LINKS_LOADING = null;
+let REF_ACTIVE_SUGGEST = -1;
+let REF_ROOT_ID = null;
+let REF_COLLAPSED = new Set();   // node-paths that are currently collapsed
+
+async function ensureLinks() {
+    if (RSA_LINKS) return RSA_LINKS;
+    if (!RSA_LINKS_LOADING) RSA_LINKS_LOADING = loadJSON("data/rsa-links.json");
+    RSA_LINKS = await RSA_LINKS_LOADING;
+    return RSA_LINKS;
+}
+
+function refSectionMeta(id) {
+    const idx = sectionIndex(STATE.laws);
+    const loc = idx.get(id);
+    if (!loc) return { id, heading: "", url: "" };
+    return { id, heading: loc.section.heading || "", url: loc.section.url || "" };
+}
+
+function bindRefSearch() {
+    const input = document.getElementById("ref-search");
+    const ul = document.getElementById("ref-suggestions");
+
+    const update = () => {
+        const q = input.value.trim();
+        if (!q) { REF_ACTIVE_SUGGEST = -1; ul.hidden = true; return; }
+        const entries = searchRSAs(q, 20);
+        REF_ACTIVE_SUGGEST = entries.length ? 0 : -1;
+        ul.innerHTML = "";
+        entries.forEach((e, i) => {
+            const li = document.createElement("li");
+            li.className = "suggestion" + (i === REF_ACTIVE_SUGGEST ? " active" : "");
+            li.innerHTML = `<span class="suggestion-id">${e.id}</span><span class="suggestion-heading">${e.heading}</span><span class="suggestion-meta">${e.title}</span>`;
+            li.onmousedown = (ev) => { ev.preventDefault(); pickRefRoot(e.id); };
+            ul.appendChild(li);
+        });
+        ul.hidden = false;
+    };
+
+    input.addEventListener("input", update);
+    input.addEventListener("focus", () => { if (input.value.trim()) update(); });
+    input.addEventListener("blur", () => setTimeout(() => { ul.hidden = true; }, 120));
+    input.addEventListener("keydown", (ev) => {
+        if (ul.hidden) return;
+        const items = ul.querySelectorAll(".suggestion");
+        if (ev.key === "ArrowDown") { ev.preventDefault(); REF_ACTIVE_SUGGEST = Math.min(items.length - 1, REF_ACTIVE_SUGGEST + 1); items.forEach((el, i) => el.classList.toggle("active", i === REF_ACTIVE_SUGGEST)); }
+        else if (ev.key === "ArrowUp") { ev.preventDefault(); REF_ACTIVE_SUGGEST = Math.max(0, REF_ACTIVE_SUGGEST - 1); items.forEach((el, i) => el.classList.toggle("active", i === REF_ACTIVE_SUGGEST)); }
+        else if (ev.key === "Enter" && REF_ACTIVE_SUGGEST >= 0) { ev.preventDefault(); const entries = searchRSAs(input.value, 20); if (entries[REF_ACTIVE_SUGGEST]) pickRefRoot(entries[REF_ACTIVE_SUGGEST].id); }
+        else if (ev.key === "Escape") { ul.hidden = true; }
+    });
+}
+
+async function pickRefRoot(id) {
+    document.getElementById("ref-search").value = id;
+    document.getElementById("ref-suggestions").hidden = true;
+    REF_ROOT_ID = id;
+    REF_COLLAPSED = new Set();
+    await ensureLinks();
+    document.getElementById("ref-detail").hidden = false;
+    renderRefInbound(id);
+    renderRefTree(id);
+}
+
+function renderRefInbound(id) {
+    const wrap = document.querySelector(".ref-inbound-list");
+    wrap.innerHTML = "";
+    const ins = (RSA_LINKS.inbound[id] || []);
+    document.querySelector(".ref-side-heading").textContent = `Cited by (${ins.length})`;
+    if (!ins.length) {
+        const p = document.createElement("p");
+        p.className = "ref-inbound-empty";
+        p.textContent = "No other RSA cites this one.";
+        wrap.appendChild(p);
+        return;
+    }
+    for (const refId of ins) {
+        const meta = refSectionMeta(refId);
+        const a = document.createElement("a");
+        a.textContent = `${refId}${meta.heading ? " — " + meta.heading : ""}`;
+        a.title = meta.heading || refId;
+        a.onclick = () => pickRefRoot(refId);
+        wrap.appendChild(a);
+    }
+}
+
+// Build a hierarchy lazily — each node has metadata, an outbound child count,
+// and a `collapsed` flag derived from REF_COLLAPSED.
+function buildRefHierarchy(rootId, maxDepth = 3) {
+    const visited = new Set();
+    function buildNode(id, path, depth) {
+        const meta = refSectionMeta(id);
+        const outs = RSA_LINKS.outbound[id] || [];
+        const node = {
+            id,
+            path,
+            heading: meta.heading,
+            url: meta.url,
+            childCount: outs.length,
+        };
+        const isCollapsed = REF_COLLAPSED.has(path);
+        if (depth >= maxDepth || isCollapsed || visited.has(id) || !outs.length) {
+            return node;
+        }
+        visited.add(id);
+        node.children = outs.map(child => buildNode(child, `${path}/${child}`, depth + 1));
+        return node;
+    }
+    return buildNode(rootId, rootId, 0);
+}
+
+function renderRefTree(rootId) {
+    const root = buildRefHierarchy(rootId);
+    const container = d3.select("#ref-tree");
+    container.selectAll("*").remove();
+
+    const hier = d3.hierarchy(root);
+    const nodeCount = hier.descendants().length;
+    const nodeHeight = 22;
+    const innerHeight = Math.max(220, nodeCount * nodeHeight);
+    const margin = { top: 12, right: 240, bottom: 12, left: 16 };
+    const width = (container.node().clientWidth || 700) - margin.left - margin.right;
+
+    const treeLayout = d3.tree().size([innerHeight, width]);
+    treeLayout(hier);
+
+    const svg = container.append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", innerHeight + margin.top + margin.bottom);
+    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    g.selectAll(".link")
+        .data(hier.links())
+        .enter()
+        .append("path")
+        .attr("class", "link")
+        .attr("d", d3.linkHorizontal()
+            .x(d => d.y)
+            .y(d => d.x));
+
+    const node = g.selectAll(".node")
+        .data(hier.descendants())
+        .enter()
+        .append("g")
+        .attr("class", d => "node"
+            + (d.data.id === rootId ? " is-root" : "")
+            + (d.data.childCount ? " has-children" : ""))
+        .attr("transform", d => `translate(${d.y},${d.x})`);
+
+    node.append("circle")
+        .attr("r", d => d.data.id === rootId ? 6 : (d.data.childCount ? 4 : 3))
+        .on("click", (event, d) => {
+            // Toggle collapse on clicks of nodes with children
+            if (!d.data.childCount) return;
+            if (REF_COLLAPSED.has(d.data.path)) REF_COLLAPSED.delete(d.data.path);
+            else REF_COLLAPSED.add(d.data.path);
+            renderRefTree(rootId);
+        })
+        .append("title")
+        .text(d => d.data.childCount ? `Click to ${REF_COLLAPSED.has(d.data.path) ? "expand" : "collapse"} (${d.data.childCount} refs)` : "leaf");
+
+    node.append("text")
+        .attr("dy", "0.32em")
+        .attr("x", 8)
+        .attr("text-anchor", "start")
+        .text(d => {
+            const cnt = d.data.childCount && (!d.children || REF_COLLAPSED.has(d.data.path)) ? ` (${d.data.childCount})` : "";
+            const head = d.data.heading ? " — " + d.data.heading : "";
+            return `${d.data.id}${head}${cnt}`;
+        })
+        .on("click", (event, d) => {
+            // Click text → re-root the tree on this node
+            if (d.data.id !== rootId) pickRefRoot(d.data.id);
+        })
+        .append("title")
+        .text(d => d.data.heading ? `${d.data.id} — ${d.data.heading}` : d.data.id);
+}
+
 function bindSearch() {
     const input = document.getElementById("rsa-search");
     const ul = document.getElementById("rsa-suggestions");
@@ -1011,6 +1191,7 @@ async function main() {
             ["renderStats",        () => renderStats(laws, STATE.issues)],
             ["buildSearchEntries", () => buildSearchEntries(laws)],
             ["bindSearch",         () => bindSearch()],
+            ["bindRefSearch",      () => bindRefSearch()],
             ["renderArcChart",     () => renderArcChart(laws, STATE.issues)],
             ["bindArcControls",    () => bindArcControls()],
             ["renderTitleBarChart",() => renderTitleBarChart(laws, STATE.issues)],
