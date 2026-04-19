@@ -1,30 +1,17 @@
 #!/usr/bin/env python3
 """
-Walk scraped HTML in data/ and produce data/laws.json with nested structure:
+Walk scraped HTML under data/<TITLE>/ and produce two artefacts that the
+front-end loads:
 
-{
-  "titles": [
-    {
-      "id": "LXII",
-      "name": "CRIMINAL CODE",
-      "chapters": [
-        {
-          "id": "625",
-          "name": "PRELIMINARY",
-          "sections": [
-            {
-              "id": "625:1",
-              "heading": "Name",
-              "text": "This title shall be known as the Criminal Code.",
-              "source": "1971, 518:1, eff. Nov. 1, 1973.",
-              "url": "https://gc.nh.gov/rsa/html/LXII/625/625-1.htm"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+1. data/laws-index.json — lightweight nested structure (titles → chapters →
+   {id, heading, url}) that drives the connections chart, search, and counts.
+2. data/laws-text/<TITLE>.json — per-title shards with the full section text
+   and source line, fetched lazily by the front-end when the user opens an
+   RSA detail card.
+
+Discovers titles automatically from data/ subdirectories that contain a
+toc.html file, so adding a new title is just running scrape.py and re-running
+this script.
 """
 
 import json

@@ -1,5 +1,7 @@
 // NH LawViz front-end
-// Loads laws.json + issues.json, renders a per-chapter bar chart (D3) and an issue list.
+// Loads data/laws-index.json (titles → chapters → section stubs) and
+// data/issues.json, then renders the connections arc chart, the by-title
+// bar chart, an RSA search with full-text drill-in, and the issue list.
 
 const CATEGORY_ORDER = ["contradiction", "ambiguity", "outdated", "discrimination", "other"];
 const CATEGORY_LABEL = {
@@ -14,7 +16,6 @@ let STATE = {
     laws: null,
     issues: [],
     activeCategory: "all",
-    selectedChapter: null,
     sectionIdx: null,
     activeArcCats: new Set(["contradiction", "ambiguity", "outdated", "discrimination"]),
     pinnedIssue: null,
@@ -51,29 +52,6 @@ function sectionIndex(laws) {
     STATE.sectionIdx = idx;
     return idx;
 }
-
-function flatSectionList(laws) {
-    // Ordered flat list of every section with metadata, assigning a dense index.
-    const out = [];
-    let i = 0;
-    for (const t of laws.titles) {
-        for (const c of t.chapters) {
-            for (const s of c.sections) {
-                out.push({
-                    i: i++,
-                    title: t.id,
-                    titleName: t.name,
-                    chapter: c.id,
-                    chapterName: c.name,
-                    section: s,
-                });
-            }
-        }
-    }
-    return out;
-}
-
-function chapterKey(titleId, chapterId) { return `${titleId}/${chapterId}`; }
 
 // Build a "view" for the current zoom level.
 // Returns { units, groups, arcs, dots, zoomable, emptyMessage }
@@ -276,19 +254,6 @@ function zoomTo(target) {
     STATE.pinnedIssue = null;
     renderArcChart(STATE.laws, STATE.issues);
     showArcHint();
-}
-
-const ROMAN_MAP = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
-function romanToArabic(r) {
-    const base = r.split("-")[0];
-    const suffix = r.includes("-") ? "-" + r.split("-")[1] : "";
-    let total = 0, prev = 0;
-    for (const ch of base.split("").reverse()) {
-        const v = ROMAN_MAP[ch] || 0;
-        total += v >= prev ? v : -v;
-        prev = v;
-    }
-    return total + suffix;
 }
 
 // ---- Search ---------------------------------------------------------------
@@ -781,8 +746,12 @@ function renderTitleBarChart(laws, issues) {
     container.selectAll("*").remove();
 
     const containerWidth = container.node().clientWidth || 1000;
-    const denseLabels = data.length > 20;
-    const margin = { top: 20, right: 20, bottom: denseLabels ? 90 : 70, left: 40 };
+    const dense = data.length > 20;
+    const labelRotation = dense ? -60 : -35;
+    const labelFontPx = dense ? 10 : 12;
+    const charPx = dense ? 5.8 : 7.2;
+    const labelText = (d) => dense ? d.title : `Title ${d.title}`;
+    const margin = { top: 20, right: 20, bottom: dense ? 90 : 70, left: 40 };
     const width = containerWidth - margin.left - margin.right;
     const height = 260;
 
@@ -818,12 +787,6 @@ function renderTitleBarChart(laws, issues) {
         .call(d3.axisBottom(x).tickFormat(() => ""));
 
     // Custom x-axis labels — same density adaptation as the arc chart.
-    const dense = data.length > 20;
-    const labelRotation = dense ? -60 : -35;
-    const labelFontPx = dense ? 10 : 12;
-    const charPx = dense ? 5.8 : 7.2;
-    const labelText = (d) => dense ? d.title : `Title ${d.title}`;
-
     const xLabels = g.selectAll(".chapter-label-group")
         .data(data)
         .enter()
