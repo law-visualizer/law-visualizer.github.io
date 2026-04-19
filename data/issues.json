@@ -401,6 +401,62 @@
       "description": "RSA 659:41 makes any person who 'shall assault any officer at any election' guilty of either 'a class A felony or a class B felony, but never less than a class B felony' — without specifying any criterion that determines which level applies. The same conduct is therefore charged differently depending entirely on prosecutorial choice, which collides with both the lenity principle (defendants should be on notice of penalty) and the equal-treatment principle (similarly situated defendants should face similar penalties).",
       "quote": "...shall be guilty of a class A felony or a class B felony, but never less than a class B felony, other provisions of the law to the contrary notwithstanding.",
       "refs": ["659:41"]
+    },
+    {
+      "id": "i059",
+      "title": "'State' defined inconsistently across seven chapters — Virgin Islands sometimes in, sometimes out",
+      "category": "contradiction",
+      "description": "Seven chapters covering agriculture, notaries, abandoned property, motor vehicles, pari-mutuel racing, and partnerships each define 'state' for their own purposes. Some include 'the United States Virgin Islands' explicitly (RSA 456-B:1, RSA 471-C:1, RSA 304-C:18); others enumerate 'state, territory, or possession' without naming the Virgin Islands (RSA 263:77, RSA 284:22-a, RSA 304-B:1, RSA 430:21). The Commonwealth of the Northern Mariana Islands shows up in some lists and not others. A reader who relies on one chapter's definition while reading another can wrongly include or exclude entire jurisdictions.",
+      "quote": "RSA 456-B:1: '...the District of Columbia, Puerto Rico, the United States Virgin Islands...' | RSA 304-B:1: 'a state, territory, or possession of the United States, the District of Columbia, or the Commonwealth of Puerto Rico...'",
+      "refs": ["263:77", "284:22-a", "304-B:1", "304-C:18", "430:21", "456-B:1", "471-C:1"]
+    },
+    {
+      "id": "i060",
+      "title": "'Commission' inside Title XXIV refers to seven different bodies",
+      "category": "contradiction",
+      "description": "Title XXIV (Games, Amusements, and Athletic Exhibitions) uses the bare word 'commission' in its definitions sections to refer to seven different statutory bodies: the boxing and wrestling commission (RSA 285:1), the lottery commission established under RSA 284:6-a (RSA 287-D:1), the state lottery commission (RSA 287-E:1), the tri-state lotto commission created by an interstate compact (RSA 287-F:4), the New Hampshire lottery commission (RSA 287-H:1), the lottery commission (RSA 287-I:1), and the lottery and gaming commission (RSA 287-J:1). Several of these are formally the same body called by different names; some genuinely are different bodies. A cross-reference using the word 'Commission' inside Title XXIV is therefore essentially unreadable without checking every chapter's local definition.",
+      "quote": "RSA 287-J:1: '\"Commission\" means the lottery and gaming commission.' | RSA 285:1: '\"Commission\" means the boxing and wrestling commission.'",
+      "refs": ["285:1", "287-D:1", "287-E:1", "287-F:4", "287-H:1", "287-I:1", "287-J:1"]
+    },
+    {
+      "id": "i061",
+      "title": "'Owner' defined five materially different ways in unrelated chapters",
+      "category": "contradiction",
+      "description": "Five chapters define 'owner' as a key statutory concept, with definitions that overlap only in name. Livestock (RSA 436:86) requires 'clear title'. Animals (RSA 437:18) requires only 'right of possession'. Self-service storage facilities (RSA 451-C:1) sweeps in 'the owner, lessor, or sublessor... or any other person registered as having an ownership interest'. Hybrid wild-animal regulation (RSA 466-A:1) extends the term to 'any person keeping, harboring, or having charge or control'. Abandoned-property (RSA 471-C:1) ties it to depositors and beneficiaries. Whether the same person is an 'owner' subject to a duty depends entirely on which chapter is being applied.",
+      "quote": "RSA 466-A:1: 'any person keeping, harboring, or having charge or control of a hybrid' | RSA 436:86: 'any person who has in his possession clear title to animals...'",
+      "refs": ["436:86", "437:18", "451-C:1", "466-A:1", "471-C:1"]
+    },
+    {
+      "id": "i062",
+      "title": "'Label' and 'labeling' defined four different ways in adjacent agriculture chapters",
+      "category": "contradiction",
+      "description": "Four agricultural-product chapters (pesticides RSA 427:2, fertilizer RSA 431:3, horticultural growing media RSA 433-A:3, commercial feed RSA 435:19) each define 'label' and 'labeling' independently. The chapter-by-chapter wording differs on whether tags 'attached to' the container count, whether ad copy 'accompanying' the product is part of labeling, and whether the inner-package versus outer-package labels are distinguished. A producer regulated by more than one of these chapters (e.g. a fertiliser-and-pesticide blender) faces overlapping but non-identical labeling rules.",
+      "quote": "RSA 427:2: '\"Label\" means a display of written, printed, or graphic matter upon the immediate container...' | RSA 433-A:3: '\"Label\" means the display of all written, printed, or graphic matter on or attached to the immediate container...'",
+      "refs": ["427:2", "431:3", "433-A:3", "435:19"]
+    },
+    {
+      "id": "i063",
+      "title": "'Charitable organization' defined two incompatible ways in the gaming code",
+      "category": "contradiction",
+      "description": "Title XXIV (charitable gaming) defines 'charitable organization' two different ways. RSA 287-A:1 ties it to a federal IRS determination ('the following: (a) Any person or entity that is determined by the Internal Revenue Service...'). RSA 287-D:1 and RSA 287-E:1 define it independently as 'any bona fide religious, charitable, civic, veterans', or fraternal or church organization' — a state-law category that does not require IRS recognition. An organisation that has lost its 501(c)(3) status but is still 'bona fide' charitable could be a 'charitable organization' under one chapter and not under another.",
+      "quote": "RSA 287-A:1: 'Any person or entity that is determined by the Internal Revenue Service...' | RSA 287-D:1: 'any bona fide religious, charitable, civic, veterans', or fraternal or church organization...'",
+      "refs": ["287-A:1", "287-D:1", "287-E:1"]
+    },
+    {
+      "id": "i064",
+      "title": "'Nuisance' deployed as a substantive trigger across agriculture statutes without definition",
+      "category": "ambiguity",
+      "description": "Title XL (Agriculture) statutes deploy the unmodified term 'nuisance' or 'public nuisance' in ways that have material legal consequences without defining the term. RSA 429:11-a deems certain abandoned appliances 'a public nuisance'. RSA 431:35 directs the commissioner to act when manure handling is 'a nuisance caused by failure to use best management practices'. RSA 432:33 grants immunity to agricultural operations that would otherwise be 'a public or private nuisance as a result of changed conditions in or around the locality'. RSA 432:34 carves out the immunity for 'negligent or improper operation'. The threshold is therefore the same word doing four different jobs, with no shared statutory definition.",
+      "quote": "No agricultural operation in operation for one year or more shall be found a public or private nuisance as a result of changed conditions in or around the locality of the agricultural operation.",
+      "refs": ["429:11-a", "431:35", "432:33", "432:34"]
+    },
+    {
+      "id": "i065",
+      "title": "'Distribute' defined three different ways in adjacent Title XL chapters",
+      "category": "contradiction",
+      "description": "RSA 431:3 (fertilizer) defines 'distribute' as 'to import, consign, manufacture, produce, compound, mix, or blend fertilizer, or to offer for sale, sell, barter or supply'. RSA 433-A:3 (horticultural growing media) reduces it to 'to offer for sale, sell, barter, or exchange, or otherwise supply or make available' — dropping the manufacture and compounding steps. RSA 435:19 (commercial feed) returns to 'to offer for sale, sell, exchange, or barter, commercial feed, or to supply, furnish, or otherwise provide'. Whether a particular pre-sale activity (manufacturing, blending) is 'distribution' subject to registration and inspection depends on which subdivision applies.",
+      "quote": "RSA 431:3: 'to import, consign, manufacture, produce, compound, mix, or blend fertilizer, or to offer for sale, sell, barter or supply' | RSA 433-A:3: 'to offer for sale, sell, barter, or exchange, or otherwise supply or make available'.",
+      "refs": ["431:3", "433-A:3", "435:19"]
     }
   ]
 }
