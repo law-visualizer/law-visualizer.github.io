@@ -512,6 +512,12 @@ footer a { color: var(--accent); }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb .separator { color: var(--muted); }
 .breadcrumb .current { color: var(--fg); font-weight: bold; }
+.breadcrumb .preview {
+    color: var(--fg);
+    font-weight: bold;
+    font-style: italic;
+    opacity: 0.85;
+}
 
 .arc-tick.zoomable { cursor: pointer; }
 .arc-tick-group.zoomable { cursor: pointer; }

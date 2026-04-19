@@ -208,11 +208,11 @@ function arcsDotsFrom(issues, unitIndicesForIssue) {
     return { arcs, dots };
 }
 
-function renderBreadcrumb(laws) {
+function renderBreadcrumb(laws, previewLabel = null) {
     const nav = document.getElementById("arc-breadcrumb");
     nav.innerHTML = "";
 
-    const crumbs = [{ label: "All titles", target: { level: "all" } }];
+    const crumbs = [{ label: "All Titles", target: { level: "all" } }];
     if (STATE.zoomLevel === "title" || STATE.zoomLevel === "chapter") {
         const tName = (laws.titles.find(t => t.id === STATE.zoomTitle) || {}).name || "";
         crumbs.push({
@@ -233,7 +233,8 @@ function renderBreadcrumb(laws) {
             sep.textContent = "›";
             nav.appendChild(sep);
         }
-        if (i === crumbs.length - 1) {
+        const isLast = i === crumbs.length - 1 && !previewLabel;
+        if (isLast) {
             const span = document.createElement("span");
             span.className = "current";
             span.textContent = crumb.label;
@@ -245,6 +246,28 @@ function renderBreadcrumb(laws) {
             nav.appendChild(a);
         }
     });
+
+    if (previewLabel) {
+        const sep = document.createElement("span");
+        sep.className = "separator";
+        sep.textContent = "›";
+        nav.appendChild(sep);
+        const span = document.createElement("span");
+        span.className = "preview";
+        span.textContent = previewLabel;
+        nav.appendChild(span);
+    }
+}
+
+// What the breadcrumb should preview when hovering a tick/label at the
+// current zoom level — describes the unit the user would zoom into (or, at
+// the chapter level, the section the user would open).
+function previewCrumbForUnit(d) {
+    const tail = d.sublabel ? " · " + d.sublabel : "";
+    if (STATE.zoomLevel === "all")     return `Title ${d.key}${tail}`;
+    if (STATE.zoomLevel === "title")   return `Chapter ${d.label}${tail}`;
+    if (STATE.zoomLevel === "chapter") return `RSA ${d.key}${tail}`;
+    return d.label;
 }
 
 function zoomTo(target) {
@@ -520,14 +543,17 @@ function renderArcChart(laws, issues) {
             .text(d => d.sublabel ? `${d.label} · ${d.sublabel}` : d.label);
     }
 
-    // Helper to sync hover state between tick and label sharing the same unit key
+    // Helper to sync hover state between tick and label sharing the same unit
+    // key, and to preview the unit's full name in the breadcrumb.
     function linkHover(selection) {
         selection
             .on("mouseenter", function (event, d) {
                 g.selectAll(`[data-unit="${d.key}"]`).classed("hovered", true);
+                renderBreadcrumb(STATE.laws, previewCrumbForUnit(d));
             })
             .on("mouseleave", function (event, d) {
                 g.selectAll(`[data-unit="${d.key}"]`).classed("hovered", false);
+                renderBreadcrumb(STATE.laws);
             });
     }
 
